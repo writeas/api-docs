@@ -465,6 +465,12 @@ Replace <code>00000000-0000-0000-0000-000000000000</code> with a user&rsquo;s ac
 <td>no</td>
 <td>Whether or not the content should be display right-to-left, for example if written in Arabic or Hebrew.</td>
 </tr>
+<tr>
+<td><strong>crosspost</strong></td>
+<td>array</td>
+<td>no</td>
+<td><strong>Must be authenticated</strong>. An array of integrations and associated usernames to post to. See <a href="#crossposting">Crossposting</a>.</td>
+</tr>
 </tbody></table>
 
 <h3 id="returns">Returns</h3>
@@ -728,7 +734,7 @@ All collection requests except retrieval must be <a href="#authentication">authe
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This creates a new collection.</p>
+<p>This creates a new collection. <strong>Pro user required</strong>.</p>
 
 <h3 id="definition">Definition</h3>
 
@@ -911,6 +917,12 @@ All collection requests except retrieval must be <a href="#authentication">authe
 <td>no</td>
 <td>Whether or not the content should be display right-to-left, for example if written in Arabic or Hebrew.</td>
 </tr>
+<tr>
+<td><strong>crosspost</strong></td>
+<td>array</td>
+<td>no</td>
+<td>An array of integrations and associated usernames to post to. See <a href="#crossposting">Crossposting</a>.</td>
+</tr>
 </tbody></table>
 
 <h3 id="returns">Returns</h3>
@@ -972,6 +984,53 @@ All collection requests except retrieval must be <a href="#authentication">authe
 <p>Currently it&rsquo;s only possible to create users, but the API isn&rsquo;t finalized.</p>
 
 <p>See <a href="#authenticate-a-user">Authentication</a> for information on logging in.</p>
+
+<h1 id="integrations">Integrations</h1>
+
+<p>Write.as integrates with other services on the web to provide features like crossposting upon publishing a Write.as post.</p>
+
+<p>On the web, these are known as <strong>channels</strong>, and if you&rsquo;re logged in, they can be added <a href="https://write.as/me/c/">here</a>.</p>
+
+<h2 id="crossposting">Crossposting</h2>
+
+<blockquote>
+<p>Example <code class="prettyprint">crosspost</code> Parameter</p>
+</blockquote>
+<pre class="highlight json"><code><span class="s2">"crosspost"</span><span class="err">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nt">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"writeas__"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nt">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ilikebeans"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nt">"medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"someone"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nt">"tumblr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example"</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>Crossposting is easy to do when publishing a new post. It requires authentication and at least one connected integration / channel on the web.</p>
+
+<aside class="notice">
+Soon you&rsquo;ll be able to retrieve a user&rsquo;s connected accounts, so this may only be relevant to users posting from their own account for now.
+</aside>
+
+<p>For the <code class="prettyprint">crosspost</code> parameter on a new post, pass a JSON array of single-property objects. The object&rsquo;s sole property should be the ID of the integration you want to crosspost to (see below), and its value should be the user&rsquo;s connected username <em>on that service</em>.</p>
+
+<table><thead>
+<tr>
+<th>ID</th>
+<th>Integration</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>twitter</td>
+<td>Twitter</td>
+</tr>
+<tr>
+<td>tumblr</td>
+<td>Tumblr</td>
+</tr>
+<tr>
+<td>medium</td>
+<td>Medium</td>
+</tr>
+</tbody></table>
 
 <hr>
 
