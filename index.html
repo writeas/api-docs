@@ -119,15 +119,11 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Write.as API! Use this to interact with Write.as.</p>
+<p>Welcome to the <a href="https://write.as">Write.as</a> API! Our API gives you full access to Write.as data and lets you build your own applications or utilities on top of it.</p>
 
-<p>Write.as works well anonymously or as a registered user. It can also be used via our Tor hidden service at <code class="prettyprint">writeas7pm7rcdqg.onion/api/</code>.</p>
+<p>Our API is accessible at <strong>https://write.as/api/</strong> (HTTPS <em>only</em>) and via our Tor hidden service at <strong>writeas7pm7rcdqg.onion/api/</strong>.</p>
 
-<aside class="success">
-Most endpoints accept both form data or JSON, assuming form data unless a <code>Content-Type: application/json</code> header is sent.
-</aside>
-
-<p>Backwards compatibility is extremely important to us, as we have a large set of clients and versions in the wild. As we add new features, we usually add new endpoints and properties alongside existing ones, but won&rsquo;t remove or change finalized ones that are documented here. If a breaking API change is required in the future, we&rsquo;ll version new endpoints and update these docs.</p>
+<p>Backwards compatibility is important to us since we have a large set of <a href="https://write.as/apps">clients</a> in the wild. As we add new features, we usually add endpoints and properties alongside existing ones, but don&rsquo;t remove or change finalized ones that are documented here. If a breaking API change is required in the future, we&rsquo;ll version new endpoints and update these docs.</p>
 
 <p>This documentation represents the officially-supported, latest API. Any properties or endpoints you discover in the API that aren&rsquo;t documented here should be considered experimental or beta functionality, and subject to change without any notice.</p>
 
@@ -185,7 +181,7 @@ Codes in the <code class="prettyprint">4xx</code> range indicate that the reques
 </tr>
 </tbody></table>
 
-<h2 id="response-object">Response Object</h2>
+<h2 id="responses">Responses</h2>
 
 <blockquote>
 <p>Successful requests return with a <code class="prettyprint">code</code> in the <code class="prettyprint">2xx</code> range and a <code class="prettyprint">data</code> object or array, depending on the request.</p>
@@ -193,7 +189,6 @@ Codes in the <code class="prettyprint">4xx</code> range indicate that the reques
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -221,15 +216,13 @@ Codes in the <code class="prettyprint">4xx</code> range indicate that the reques
 
 <p>This wrapper will never contain an <code class="prettyprint">error_msg</code> property at the top level.</p>
 
+<aside class="success">
+Most endpoints <em>accept</em> both form data or JSON, assuming form data by default unless a <code>Content-Type: application/json</code> header is sent.
+</aside>
+
 <h1 id="authentication">Authentication</h1>
 
-<blockquote>
-<p>All endpoints will work with authenticated requests.</p>
-</blockquote>
-
-<p>Write.as doesn&rsquo;t require any authentication, either for the client or end user.</p>
-
-<p>However, if you want to perform actions on behalf of a user, you&rsquo;ll need to pass a user access token with any requests:</p>
+<p>The API doesn&rsquo;t require any authentication, either for the client or end user. However, if you want to perform actions on behalf of a user, you&rsquo;ll need to pass a user access token with any requests:</p>
 
 <p><code class="prettyprint">Authorization: 00000000-0000-0000-0000-000000000000</code></p>
 
