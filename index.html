@@ -767,8 +767,8 @@ All collection requests except retrieval must be <a href="#authentication">authe
 
 <p>Errors are returned with a user-friendly error message.</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Incorrect password."</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You must be a Pro user to do that."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -791,8 +791,12 @@ All collection requests except retrieval must be <a href="#authentication">authe
 <td>You&rsquo;re not a Pro user.</td>
 </tr>
 <tr>
+<td>409</td>
+<td>Alias is taken.</td>
+</tr>
+<tr>
 <td>412</td>
-<td>You&rsquo;ve reached the maximum number of collections allowed, or alias is taken.</td>
+<td>You&rsquo;ve reached the maximum number of collections allowed.</td>
 </tr>
 </tbody></table>
 
@@ -1043,6 +1047,7 @@ Soon you&rsquo;ll be able to retrieve a user&rsquo;s connected accounts, so this
 	  _paq.push(["setDomains", ["*.writeas.github.io/docs"]]);
 	  _paq.push(['trackPageView']);
 	  _paq.push(['enableLinkTracking']);
+	  _paq.push(['enableHeartBeatTimer']);
 	  (function() {
 		var u="//analytics.write.as/";
 		_paq.push(['setTrackerUrl', u+'piwik.php']);
