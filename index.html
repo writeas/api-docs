@@ -571,7 +571,7 @@ When the request is unauthenticated, the client should store the <code>token</co
 </code></pre>
 
 <blockquote>
-<p>A successful deletion returns a <code class="prettyprint">200</code> with no content in the body.</p>
+<p>A successful deletion returns a <code class="prettyprint">204</code> with no content in the body.</p>
 </blockquote>
 
 <p>This deletes a post.</p>
@@ -600,11 +600,7 @@ When the request is unauthenticated, the client should store the <code>token</co
 
 <h3 id="returns">Returns</h3>
 
-<p>A <code class="prettyprint">200</code> status code and no content in the body.</p>
-
-<aside class="warning">
-<strong>Upcoming breaking change</strong>: Soon this will return a <code>204</code>. Current clients should handle both status codes as indicating a successful operation.
-</aside>
+<p>A <code class="prettyprint">204</code> status code and no content in the body.</p>
 
 <h1 id="collections">Collections</h1>
 
