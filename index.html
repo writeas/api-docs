@@ -111,6 +111,8 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
+            <li><a href='https://twitter.com/writeas__'>@writeas__</a></li>
+            <li><a href='https://write.as/blog/'>Updates</a></li>
             <li><a href='https://github.com/tripit/slate'>Docs by Slate</a></li>
         </ul>
     </div>
@@ -224,107 +226,13 @@ Most endpoints <em>accept</em> both form data or JSON, assuming form data by def
 
 <p>The API doesn&rsquo;t require any authentication, either for the client or end user. However, if you want to perform actions on behalf of a user, you&rsquo;ll need to pass a user access token with any requests:</p>
 
-<p><code class="prettyprint">Authorization: 00000000-0000-0000-0000-000000000000</code></p>
+<p><code class="prettyprint">Authorization: Token 00000000-0000-0000-0000-000000000000</code></p>
+
+<p>See the <a href="#authenticate-a-user">Authenticate a User</a> section for information on logging in.</p>
 
 <aside class="notice">
 Replace <code>00000000-0000-0000-0000-000000000000</code> with a user&rsquo;s access token.
 </aside>
-
-<h2 id="authenticate-a-user">Authenticate a User</h2>
-<pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
-</span></code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/auth/login"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -d <span class="s1">'{"alias": "matt", "pass": "12345"}'</span>
-</code></pre>
-
-<blockquote>
-<p>Example Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt@example.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-03T02:41:19Z"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Authenticates a user with Write.as, creating an access token for future authenticated requests.</p>
-
-<p>Users can only authenticate with their primary account, i.e. the first collection/blog they created, which may or may not have multiple collections associated with it.</p>
-
-<h3 id="definition">Definition</h3>
-
-<p><code class="prettyprint">POST https://write.as/api/auth/login</code></p>
-
-<h3 id="arguments">Arguments</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>alias</strong></td>
-<td>string</td>
-<td>yes</td>
-<td>The user&rsquo;s username / alias.</td>
-</tr>
-<tr>
-<td><strong>pass</strong></td>
-<td>string</td>
-<td>yes</td>
-<td>The user&rsquo;s password.</td>
-</tr>
-</tbody></table>
-
-<h3 id="returns">Returns</h3>
-
-<p>A user access token and the authenticated user&rsquo;s full data.</p>
-
-<h3 id="errors">Errors</h3>
-
-<p>Errors are returned with a user-friendly error message.</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Incorrect password."</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Request is missing required information, or bad form data / JSON.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Incorrect information given.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>User doesn&rsquo;t exist.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>You&rsquo;re trying to log in too many times too quickly. You shouldn&rsquo;t see this unless you&rsquo;re doing something bad (in which case, please stop that).</td>
-</tr>
-</tbody></table>
 
 <h1 id="posts">Posts</h1>
 
@@ -375,9 +283,11 @@ Replace <code>00000000-0000-0000-0000-000000000000</code> with a user&rsquo;s ac
 </tbody></table>
 
 <h2 id="publish-a-post">Publish a Post</h2>
-<pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+</span><span class="n">p</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">CreatePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
+    </span><span class="n">Title</span><span class="o">:</span><span class="x">   </span><span class="s">"My First Post"</span><span class="p">,</span><span class="x">
+    </span><span class="n">Content</span><span class="o">:</span><span class="x"> </span><span class="s">"This is a post."</span><span class="p">,</span><span class="x">
+</span><span class="p">})</span><span class="x">
 </span></code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/posts"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -475,7 +385,8 @@ When the request is unauthenticated, the client should store the <code>token</co
 </aside>
 
 <h2 id="retrieve-a-post">Retrieve a Post</h2>
-<pre class="highlight go"><code><span class="n">s</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">post</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"rf3t35fkax0aw"</span><span class="p">)</span><span class="x">
+<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+</span><span class="n">p</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">GetPost</span><span class="p">(</span><span class="s">"rf3t35fkax0aw"</span><span class="p">)</span><span class="x">
 </span></code></pre>
 <pre class="highlight shell"><code>curl https://write.as/api/posts/rf3t35fkax0aw
 </code></pre>
@@ -508,9 +419,12 @@ When the request is unauthenticated, the client should store the <code>token</co
 <p><code class="prettyprint">GET https://write.as/api/posts/{POST_ID}</code></p>
 
 <h2 id="update-a-post">Update a Post</h2>
-<pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+</span><span class="n">p</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">UpdatePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
+    </span><span class="n">ID</span><span class="o">:</span><span class="x">      </span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span><span class="x">
+    </span><span class="n">Token</span><span class="o">:</span><span class="x">   </span><span class="s">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="x">
+    </span><span class="n">Content</span><span class="o">:</span><span class="x"> </span><span class="s">"My post is updated."</span><span class="p">,</span><span class="x">
+</span><span class="p">})</span><span class="x">
 </span></code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/posts/rf3t35fkax0aw"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -646,9 +560,11 @@ When the request is unauthenticated, the client should store the <code>token</co
 <p>An error <code class="prettyprint">410</code> with a message: <em>Post unpublished by author.</em></p>
 
 <h2 id="delete-a-post">Delete a Post</h2>
-<pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">DeletePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
+    </span><span class="n">ID</span><span class="o">:</span><span class="x">    </span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span><span class="x">
+    </span><span class="n">Token</span><span class="o">:</span><span class="x"> </span><span class="s">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="x">
+</span><span class="p">})</span><span class="x">
 </span></code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/posts/rf3t35fkax0aw?token=ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span> <span class="se">\</span>
   -X DELETE
@@ -692,7 +608,7 @@ When the request is unauthenticated, the client should store the <code>token</co
 
 <h1 id="collections">Collections</h1>
 
-<p>Collections are referred to as blogs on most of Write.as. They&rsquo;re groups of posts that currently can only be <em>public</em>, i.e. available at a publicly-accessible URL.</p>
+<p>Collections are referred to as <strong>blogs</strong> on most of Write.as. Each gets its own shareable URL.</p>
 
 <p>Each user has one collection matching their username, but can also have more collections connected to their account as a Pro user.</p>
 
@@ -706,7 +622,7 @@ All collection requests except retrieval must be <a href="#authentication">authe
 </span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
 </span></code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/collections"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -d <span class="s1">'{"alias": "new-blog", "title": "The Best Blog Ever"}'</span>
 </code></pre>
@@ -839,7 +755,7 @@ All collection requests except retrieval must be <a href="#authentication">authe
 </span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
 </span></code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog/posts"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -d <span class="s1">'{"body": "This is a blog post.", "title": "My Post"}'</span>
@@ -976,11 +892,277 @@ All collection requests except retrieval must be <a href="#authentication">authe
 
 <p>The requested collection and its posts in a <code class="prettyprint">posts</code> array.</p>
 
+<h2 id="move-a-post-to-a-collection">Move a Post to a Collection</h2>
+<pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
+</span><span class="c">// Use curl command or contribute at:</span><span class="x">
+</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+</span></code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog/collect"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -d <span class="s1">'[{"id": "rf3t35fkax0aw", "token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"}]'</span>
+</code></pre>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-first-post"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:46Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a post."</span><span class="p">,</span><span class="w">
+      </span><span class="err">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This adds a group of posts to a collection. This works for either posts that were created anonymously (i.e. don&rsquo;t belong to the user account) or posts already owned by the user account.</p>
+
+<h3 id="definition">Definition</h3>
+
+<p><code class="prettyprint">POST https://write.as/api/collections/{COLLECTION_ALIAS}/collect</code></p>
+
+<h3 id="arguments">Arguments</h3>
+
+<p>Pass an array of objects, each containing the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>string</td>
+<td>yes</td>
+<td>The ID of the post to add to the collection</td>
+</tr>
+<tr>
+<td><strong>token</strong></td>
+<td>string</td>
+<td>maybe*</td>
+<td>The post&rsquo;s modify token. *Required if the post doesn&rsquo;t belong to the requesting user.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>A <code class="prettyprint">200</code> at the top level for all requests. <code class="prettyprint">data</code> contains an array of response envelopes: each with <code class="prettyprint">code</code> and <code class="prettyprint">post</code> (with full post data) on success, or <code class="prettyprint">code</code> and <code class="prettyprint">error_msg</code> on failure for any given post.</p>
+
 <h1 id="users">Users</h1>
 
-<p>Currently it&rsquo;s only possible to create users, but the API isn&rsquo;t finalized.</p>
+<p>Users have posts and collections associated with them that can be accessed across devices and browsers.</p>
 
-<p>See <a href="#authenticate-a-user">Authentication</a> for information on logging in.</p>
+<p>Having an account isn&rsquo;t necessary to interact with Write.as, but provides useful functionality impossible or difficult to implement client-side. It does come with the trade-off of anonymity for pseudonymity.</p>
+
+<p>However, Write.as is also set up to work well pseudo- and anonymously at the same time. If your client performs actions on behalf of a user, simply send the <code class="prettyprint">Authorization</code> header for user actions and leave it off for anonymous requests, saving any published posts&rsquo; <code class="prettyprint">token</code> like normal. Posts published anonymously can still be synced at any time, or never synced to ensure an account isn&rsquo;t associated with posts a user doesn&rsquo;t want to be associated with.</p>
+
+<h2 id="authenticate-a-user">Authenticate a User</h2>
+<pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
+</span><span class="c">// Use curl command or contribute at:</span><span class="x">
+</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+</span></code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/auth/login"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -d <span class="s1">'{"alias": "matt", "pass": "12345"}'</span>
+</code></pre>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-03T02:41:19Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Authenticates a user with Write.as, creating an access token for future authenticated requests.</p>
+
+<p>Users can only authenticate with their primary account, i.e. the first collection/blog they created, which may or may not have multiple collections associated with it.</p>
+
+<h3 id="definition">Definition</h3>
+
+<p><code class="prettyprint">POST https://write.as/api/auth/login</code></p>
+
+<h3 id="arguments">Arguments</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>alias</strong></td>
+<td>string</td>
+<td>yes</td>
+<td>The user&rsquo;s username / alias.</td>
+</tr>
+<tr>
+<td><strong>pass</strong></td>
+<td>string</td>
+<td>yes</td>
+<td>The user&rsquo;s password.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>A user access token and the authenticated user&rsquo;s full data.</p>
+
+<h3 id="errors">Errors</h3>
+
+<p>Errors are returned with a user-friendly error message.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Incorrect password."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Request is missing required information, or bad form data / JSON.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Incorrect information given.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>User doesn&rsquo;t exist.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>You&rsquo;re trying to log in too many times too quickly. You shouldn&rsquo;t see this unless you&rsquo;re doing something bad (in which case, please stop that).</td>
+</tr>
+</tbody></table>
+
+<h2 id="verify-a-user">Verify a User</h2>
+<pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
+</span><span class="c">// Use curl command or contribute at:</span><span class="x">
+</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+</span></code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/me"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -d <span class="s1">'{"token": "00000000-0000-0000-0000-000000000000"}'</span>
+</code></pre>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-03T02:41:19Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Authenticates a user with Write.as, creating an access token for future authenticated requests.</p>
+
+<p>Users can only authenticate with their primary account, i.e. the first collection/blog they created, which may or may not have multiple collections associated with it.</p>
+
+<h3 id="definition">Definition</h3>
+
+<p><code class="prettyprint">POST https://write.as/api/me</code></p>
+
+<h3 id="arguments">Arguments</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>alias</strong></td>
+<td>string</td>
+<td>yes</td>
+<td>The user&rsquo;s username / alias.</td>
+</tr>
+<tr>
+<td><strong>pass</strong></td>
+<td>string</td>
+<td>yes</td>
+<td>The user&rsquo;s password.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>A user access token and the authenticated user&rsquo;s full data.</p>
+
+<h3 id="errors">Errors</h3>
+
+<p>Errors are returned with a user-friendly error message.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Incorrect password."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Request is missing required information, or bad form data / JSON.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Incorrect information given.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>User doesn&rsquo;t exist.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>You&rsquo;re trying to log in too many times too quickly. You shouldn&rsquo;t see this unless you&rsquo;re doing something bad (in which case, please stop that).</td>
+</tr>
+</tbody></table>
 
 <h1 id="integrations">Integrations</h1>
 
