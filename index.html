@@ -808,6 +808,31 @@ All collection requests except retrieval must be <a href="#authentication">authe
 
 <p>The requested collection.</p>
 
+<h2 id="delete-a-collection">Delete a Collection</h2>
+<pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
+</span><span class="c">// Use curl command or contribute at:</span><span class="x">
+</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+</span></code></pre>
+<pre class="highlight shell"><code>curl https://write.as/api/collections/new-blog <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -X DELETE
+</code></pre>
+
+<blockquote>
+<p>A successful deletion returns a <code class="prettyprint">204</code> with no content in the body.</p>
+</blockquote>
+
+<p>This permanently deletes a collection and makes any posts on it anonymous.</p>
+
+<h3 id="definition">Definition</h3>
+
+<p><code class="prettyprint">DELETE https://write.as/api/collections/{COLLECTION_ALIAS}</code></p>
+
+<h3 id="returns">Returns</h3>
+
+<p>A <code class="prettyprint">204</code> status code and no content in the body.</p>
+
 <h2 id="publish-a-collection-post">Publish a Collection Post</h2>
 <pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
 </span><span class="c">// Use curl command or contribute at:</span><span class="x">
