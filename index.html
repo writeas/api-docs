@@ -669,16 +669,18 @@ When the request is unauthenticated, the client should store the <code>token</co
 
 <p>Collections are referred to as <strong>blogs</strong> on most of Write.as. Each gets its own shareable URL.</p>
 
-<p>Each user has one collection matching their username, but can also have more collections connected to their account as a Pro user.</p>
+<p>Each user has one collection matching their username, but can also have more collections connected to their account as a <a href="https://write.as/subscribe">Casual or Pro</a> user.</p>
 
 <aside class="notice">
 All collection requests except retrieval must be <a href="#authentication">authenticated</a>.
 </aside>
 
 <h2 id="create-a-collection">Create a Collection</h2>
-<pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+</span><span class="n">coll</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">CreateCollection</span><span class="p">(</span><span class="o">&amp;</span><span class="n">CollectionParams</span><span class="p">{</span><span class="x">
+    </span><span class="n">Alias</span><span class="o">:</span><span class="x"> </span><span class="s">"new-blog"</span><span class="p">,</span><span class="x">
+    </span><span class="n">Title</span><span class="o">:</span><span class="x"> </span><span class="s">"The Best Blog Ever"</span><span class="p">,</span><span class="x">
+</span><span class="p">})</span><span class="x">
 </span></code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/collections"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
@@ -702,7 +704,7 @@ All collection requests except retrieval must be <a href="#authentication">authe
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This creates a new collection. <strong>Pro user required</strong>.</p>
+<p>This creates a new collection. <strong>Casual or Pro user required</strong>.</p>
 
 <h3 id="definition">Definition</h3>
 
@@ -776,9 +778,8 @@ All collection requests except retrieval must be <a href="#authentication">authe
 </tbody></table>
 
 <h2 id="retrieve-a-collection">Retrieve a Collection</h2>
-<pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+</span><span class="n">coll</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">GetCollection</span><span class="p">(</span><span class="s">"new-blog"</span><span class="p">)</span><span class="x">
 </span></code></pre>
 <pre class="highlight shell"><code>curl https://write.as/api/collections/new-blog
 </code></pre>
