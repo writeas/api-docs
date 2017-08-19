@@ -291,7 +291,7 @@ Replace <code>00000000-0000-0000-0000-000000000000</code> with a user&rsquo;s ac
 </tbody></table>
 
 <h2 id="publish-a-post">Publish a Post</h2>
-<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
 </span><span class="n">p</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">CreatePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
     </span><span class="n">Title</span><span class="o">:</span><span class="x">   </span><span class="s">"My First Post"</span><span class="p">,</span><span class="x">
     </span><span class="n">Content</span><span class="o">:</span><span class="x"> </span><span class="s">"This is a post."</span><span class="p">,</span><span class="x">
@@ -427,7 +427,7 @@ When the request is unauthenticated, the client should store the <code>token</co
 <p><code class="prettyprint">GET https://write.as/api/posts/{POST_ID}</code></p>
 
 <h2 id="update-a-post">Update a Post</h2>
-<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
 </span><span class="n">p</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">UpdatePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
     </span><span class="n">ID</span><span class="o">:</span><span class="x">      </span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span><span class="x">
     </span><span class="n">Token</span><span class="o">:</span><span class="x">   </span><span class="s">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="x">
@@ -568,7 +568,7 @@ When the request is unauthenticated, the client should store the <code>token</co
 <p>An error <code class="prettyprint">410</code> with a message: <em>Post unpublished by author.</em></p>
 
 <h2 id="delete-a-post">Delete a Post</h2>
-<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
 </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">DeletePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
     </span><span class="n">ID</span><span class="o">:</span><span class="x">    </span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span><span class="x">
     </span><span class="n">Token</span><span class="o">:</span><span class="x"> </span><span class="s">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="x">
@@ -611,7 +611,8 @@ When the request is unauthenticated, the client should store the <code>token</co
 <p>A <code class="prettyprint">204</code> status code and no content in the body.</p>
 
 <h2 id="claim-posts">Claim Posts</h2>
-<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+</span><span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span><span class="x">
 </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">ClaimPosts</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[]</span><span class="n">OwnedPostParams</span><span class="p">{</span><span class="x">
     </span><span class="p">{</span><span class="x">
         </span><span class="n">ID</span><span class="o">:</span><span class="x">    </span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span><span class="x">
@@ -676,7 +677,8 @@ All collection requests except retrieval must be <a href="#authentication">authe
 </aside>
 
 <h2 id="create-a-collection">Create a Collection</h2>
-<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+</span><span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span><span class="x">
 </span><span class="n">coll</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">CreateCollection</span><span class="p">(</span><span class="o">&amp;</span><span class="n">CollectionParams</span><span class="p">{</span><span class="x">
     </span><span class="n">Alias</span><span class="o">:</span><span class="x"> </span><span class="s">"new-blog"</span><span class="p">,</span><span class="x">
     </span><span class="n">Title</span><span class="o">:</span><span class="x"> </span><span class="s">"The Best Blog Ever"</span><span class="p">,</span><span class="x">
@@ -778,7 +780,7 @@ All collection requests except retrieval must be <a href="#authentication">authe
 </tbody></table>
 
 <h2 id="retrieve-a-collection">Retrieve a Collection</h2>
-<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
 </span><span class="n">coll</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">GetCollection</span><span class="p">(</span><span class="s">"new-blog"</span><span class="p">)</span><span class="x">
 </span></code></pre>
 <pre class="highlight shell"><code>curl https://write.as/api/collections/new-blog
@@ -1057,7 +1059,7 @@ All collection requests except retrieval must be <a href="#authentication">authe
 <p>However, Write.as is also set up to work well pseudo- and anonymously at the same time. If your client performs actions on behalf of a user, simply send the <code class="prettyprint">Authorization</code> header for user actions and leave it off for anonymous requests, saving any published posts&rsquo; <code class="prettyprint">token</code> like normal. Posts published anonymously can still be synced at any time, or never synced to ensure an account isn&rsquo;t associated with posts a user doesn&rsquo;t want to be associated with.</p>
 
 <h2 id="authenticate-a-user">Authenticate a User</h2>
-<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+<pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
 </span><span class="n">u</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">LogIn</span><span class="p">(</span><span class="s">"matt"</span><span class="p">,</span><span class="x"> </span><span class="s">"12345"</span><span class="p">)</span><span class="x">
 </span></code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/auth/login"</span> <span class="se">\</span>
