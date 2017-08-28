@@ -1050,6 +1050,68 @@ All collection requests except retrieval must be <a href="#authentication">authe
 
 <p>A <code class="prettyprint">200</code> at the top level for all requests. <code class="prettyprint">data</code> contains an array of response envelopes: each with <code class="prettyprint">code</code> and <code class="prettyprint">post</code> (with full post data) on success, or <code class="prettyprint">code</code> and <code class="prettyprint">error_msg</code> on failure for any given post.</p>
 
+<h2 id="pin-a-post-to-a-collection">Pin a Post to a Collection</h2>
+<pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
+</span><span class="c">// Use curl command or contribute at:</span><span class="x">
+</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+</span></code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog/pin"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -d <span class="s1">'[{"id": "rf3t35fkax0aw", "position": 1}]'</span>
+</code></pre>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This pins a blog post to a collection. It&rsquo;ll show up as a navigation item in the collection/blog home page header, instead of on the blog itself.</p>
+
+<h3 id="definition">Definition</h3>
+
+<p><code class="prettyprint">POST https://write.as/api/collections/{COLLECTION_ALIAS}/pin</code></p>
+
+<h3 id="arguments">Arguments</h3>
+
+<p>Pass an array of objects, each containing the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>string</td>
+<td>yes</td>
+<td>The ID of the post to pin to the collection</td>
+</tr>
+<tr>
+<td><strong>position</strong></td>
+<td>integer</td>
+<td>no</td>
+<td>The numeric position in which to pin the post. Will pin at end of list if parameter not given.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>A <code class="prettyprint">200</code> at the top level for all requests. <code class="prettyprint">data</code> contains an array of response envelopes: each with <code class="prettyprint">code</code> and <code class="prettyprint">id</code>, plus <code class="prettyprint">error_msg</code> on failure for any given post.</p>
+
 <h1 id="users">Users</h1>
 
 <p>Users have posts and collections associated with them that can be accessed across devices and browsers.</p>
