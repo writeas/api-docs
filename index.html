@@ -131,10 +131,17 @@
 
 <h2 id="libraries">Libraries</h2>
 
-<p>We have official libraries for various programming languages, and welcome any new ones created by the community.</p>
+<p>These are our official libraries in different programming languages.</p>
 
 <ul>
 <li><strong>Go</strong> - <code class="prettyprint">go get github.com/writeas/go-writeas</code> &middot; <a href="https://godoc.org/github.com/writeas/go-writeas">GoDoc</a> &middot; <a href="https://github.com/writeas/go-writeas">GitHub</a></li>
+<li><strong>Java</strong> - <a href="https://github.com/writeas/java-writeas">GitHub</a></li>
+</ul>
+
+<p>These libraries were created by the community &mdash; <a href="https://write.as/contact">let us know</a> if you create one, too!</p>
+
+<ul>
+<li><strong>Javascript</strong> - <code class="prettyprint">npm install writeas</code> &middot; <a href="https://www.npmjs.com/package/writeas">npm</a> &middot; <a href="https://github.com/devsnek/writeas.js">GitHub</a></li>
 </ul>
 
 <h2 id="errors">Errors</h2>
@@ -324,13 +331,17 @@ Replace <code>00000000-0000-0000-0000-000000000000</code> with a user&rsquo;s ac
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This creates a new post, associating it with a user account if authenticated. If the request is successful, the post will be available at:</p>
+<p>This creates a new post, associating it with a user account if authenticated. If the request is successful, the post will be available all of these locations:</p>
 
 <ul>
 <li>write.as/<code class="prettyprint">{id}</code></li>
 <li>writeas7pm7rcdqg.onion/<code class="prettyprint">{id}</code></li>
 <li>paste.as/<code class="prettyprint">{id}</code> &ndash; if <code class="prettyprint">font</code> was <em>code</em> or <em>mono</em></li>
 </ul>
+
+<h3 id="authentication">Authentication</h3>
+
+<p>This can be done anonymously or while <a href="#authentication">authenticated</a>.</p>
 
 <h3 id="definition">Definition</h3>
 
@@ -462,6 +473,10 @@ When the request is unauthenticated, the client should store the <code>token</co
 </span></code></pre>
 
 <p>This updates an existing post.</p>
+
+<h3 id="authentication">Authentication</h3>
+
+<p>This can be done anonymously or while <a href="#authentication">authenticated</a>. If done anonymously, it requires past knowledge of the existing post&rsquo;s <code class="prettyprint">token</code>.</p>
 
 <h3 id="definition">Definition</h3>
 
@@ -855,7 +870,7 @@ All collection requests except retrieval must be <a href="#authentication">authe
   </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-first-post"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -956,6 +971,7 @@ All collection requests except retrieval must be <a href="#authentication">authe
         </span><span class="nt">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nt">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"listed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T14:29:33Z"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Post"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a blog post."</span><span class="p">,</span><span class="w">
@@ -1112,6 +1128,62 @@ All collection requests except retrieval must be <a href="#authentication">authe
 
 <p>A <code class="prettyprint">200</code> at the top level for all requests. <code class="prettyprint">data</code> contains an array of response envelopes: each with <code class="prettyprint">code</code> and <code class="prettyprint">id</code>, plus <code class="prettyprint">error_msg</code> on failure for any given post.</p>
 
+<h2 id="unpin-a-post-from-a-collection">Unpin a Post from a Collection</h2>
+<pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
+</span><span class="c">// Use curl command or contribute at:</span><span class="x">
+</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+</span></code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog/unpin"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -d <span class="s1">'[{"id": "rf3t35fkax0aw"}]'</span>
+</code></pre>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This unpins a blog post from a collection. It&rsquo;ll remove the navigation item from the collection/blog home page header and put the post back on the blog itself.</p>
+
+<h3 id="definition">Definition</h3>
+
+<p><code class="prettyprint">POST https://write.as/api/collections/{COLLECTION_ALIAS}/unpin</code></p>
+
+<h3 id="arguments">Arguments</h3>
+
+<p>Pass an array of objects, each containing the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>string</td>
+<td>yes</td>
+<td>The ID of the post to unpin from the collection</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>A <code class="prettyprint">200</code> at the top level for all requests. <code class="prettyprint">data</code> contains an array of response envelopes: each with <code class="prettyprint">code</code> and <code class="prettyprint">id</code>, plus <code class="prettyprint">error_msg</code> on failure for any given post.</p>
+
 <h1 id="users">Users</h1>
 
 <p>Users have posts and collections associated with them that can be accessed across devices and browsers.</p>
@@ -1215,6 +1287,180 @@ All collection requests except retrieval must be <a href="#authentication">authe
 </tr>
 </tbody></table>
 
+<h2 id="retrieve-authenticated-user">Retrieve Authenticated User</h2>
+<pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
+</span><span class="c">// Use curl command or contribute at:</span><span class="x">
+</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+</span></code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/me"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -X GET
+</code></pre>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-03T02:41:19Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="definition">Definition</h3>
+
+<p><code class="prettyprint">GET https://write.as/api/me</code></p>
+
+<h3 id="arguments">Arguments</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>alias</strong></td>
+<td>string</td>
+<td>yes</td>
+<td>The user&rsquo;s username / alias.</td>
+</tr>
+<tr>
+<td><strong>pass</strong></td>
+<td>string</td>
+<td>yes</td>
+<td>The user&rsquo;s password.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>An authenticated user&rsquo;s full data.</p>
+
+<h3 id="errors">Errors</h3>
+
+<p>Errors are returned with a user-friendly error message.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Incorrect password."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>404</td>
+<td>User doesn&rsquo;t exist.</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-user-account">Update User Account</h2>
+<pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
+</span><span class="c">// Use curl command or contribute at:</span><span class="x">
+</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+</span></code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/me/self"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -d <span class="s1">'{"email": "matt@example.com", "new_pass": "12345" }'</span>
+</code></pre>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"has_pass"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-03T02:41:19Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="definition">Definition</h3>
+
+<p><code class="prettyprint">GET https://write.as/api/me/self</code></p>
+
+<h3 id="arguments">Arguments</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>email</strong></td>
+<td>string</td>
+<td>no</td>
+<td>The user&rsquo;s new email.</td>
+</tr>
+<tr>
+<td><strong>new_pass</strong></td>
+<td>string</td>
+<td>no</td>
+<td>The user&rsquo;s new password.</td>
+</tr>
+<tr>
+<td><strong>current_pass</strong></td>
+<td>string</td>
+<td>no</td>
+<td>The user&rsquo;s current password, if they have one.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>An authenticated user&rsquo;s full data.</p>
+
+<h3 id="errors">Errors</h3>
+
+<p>Errors are returned with a user-friendly error message.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Incorrect password."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>401</td>
+<td>Invalid / expired token given.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Bad / no current password given when one Gs required (i.e. when changing a user&rsquo;s password)</td>
+</tr>
+<tr>
+<td>404</td>
+<td>User doesn&rsquo;t exist.</td>
+</tr>
+</tbody></table>
+
 <h1 id="integrations">Integrations</h1>
 
 <p>Write.as integrates with other services on the web to provide features like crossposting upon publishing a Write.as post.</p>
@@ -1277,7 +1523,7 @@ Soon you&rsquo;ll be able to retrieve a user&rsquo;s connected accounts, so this
     <!-- Piwik -->
 	<script type="text/javascript">
 	  var _paq = _paq || [];
-	  _paq.push(["setDomains", ["*.writeas.github.io/docs"]]);
+	  _paq.push(["setDomains", ["developer.write.as", "*.writeas.github.io/docs"]]);
 	  _paq.push(['trackPageView']);
 	  _paq.push(['enableLinkTracking']);
 	  _paq.push(['enableHeartBeatTimer']);
