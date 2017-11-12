@@ -91,7 +91,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;go&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;go&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -103,6 +103,7 @@
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="go">go</a>
+              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -304,6 +305,8 @@ Replace <code>00000000-0000-0000-0000-000000000000</code> with a user&rsquo;s ac
     </span><span class="n">Content</span><span class="o">:</span><span class="x"> </span><span class="s">"This is a post."</span><span class="p">,</span><span class="x">
 </span><span class="p">})</span><span class="x">
 </span></code></pre>
+<pre class="highlight javascript"><code><span class="c1">// TODO: do dis</span>
+</code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/posts"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
@@ -342,6 +345,10 @@ Replace <code>00000000-0000-0000-0000-000000000000</code> with a user&rsquo;s ac
 <h3 id="authentication">Authentication</h3>
 
 <p>This can be done anonymously or while <a href="#authentication">authenticated</a>.</p>
+
+<aside class="notice">
+When the request is unauthenticated, the client should store the <code>token</code> returned from this request so users can modify their post later. Otherwise it isn&rsquo;t necessary.
+</aside>
 
 <h3 id="definition">Definition</h3>
 
@@ -398,10 +405,6 @@ Replace <code>00000000-0000-0000-0000-000000000000</code> with a user&rsquo;s ac
 <h3 id="returns">Returns</h3>
 
 <p>The newly created post.</p>
-
-<aside class="notice">
-When the request is unauthenticated, the client should store the <code>token</code> returned from this request so users can modify their post later. Otherwise it isn&rsquo;t necessary.
-</aside>
 
 <h2 id="retrieve-a-post">Retrieve a Post</h2>
 <pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
@@ -476,7 +479,11 @@ When the request is unauthenticated, the client should store the <code>token</co
 
 <h3 id="authentication">Authentication</h3>
 
-<p>This can be done anonymously or while <a href="#authentication">authenticated</a>. If done anonymously, it requires past knowledge of the existing post&rsquo;s <code class="prettyprint">token</code>.</p>
+<p>This can be done anonymously or while <a href="#authentication">authenticated</a>.</p>
+
+<aside class="notice">
+If done anonymously, it requires past knowledge of the existing post&rsquo;s <code>token</code>.
+</aside>
 
 <h3 id="definition">Definition</h3>
 
@@ -637,6 +644,7 @@ When the request is unauthenticated, the client should store the <code>token</co
 </span></code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/posts/claim"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -d <span class="s1">'[{"id": "rf3t35fkax0aw", "token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"}]'</span>
 </code></pre>
@@ -688,8 +696,39 @@ When the request is unauthenticated, the client should store the <code>token</co
 <p>Each user has one collection matching their username, but can also have more collections connected to their account as a <a href="https://write.as/subscribe">Casual or Pro</a> user.</p>
 
 <aside class="notice">
-All collection requests except retrieval must be <a href="#authentication">authenticated</a>.
+All collection requests must be <a href="#authentication">authenticated</a>, except for retrieval when a collection is <strong>not</strong> private.
 </aside>
+
+<p>Collections have customizable visiblity, which affects all posts in that collection. The <code class="prettyprint">public</code> property on Collections reflects one of these states.  <em>Changing this is currently unsupported by the API</em>.</p>
+
+<table><thead>
+<tr>
+<th>Setting</th>
+<th><code class="prettyprint">public</code></th>
+<th>Viewable by</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Unlisted</td>
+<td>false</td>
+<td>Anyone with URL</td>
+</tr>
+<tr>
+<td>Private</td>
+<td>false</td>
+<td>Owner only</td>
+</tr>
+<tr>
+<td>Password-protected</td>
+<td>false</td>
+<td>Anyone with password</td>
+</tr>
+<tr>
+<td>Public</td>
+<td>true</td>
+<td>Anyone with URL, and promoted on <a href="https://read.write.as">Read Write.as</a></td>
+</tr>
+</tbody></table>
 
 <h2 id="create-a-collection">Create a Collection</h2>
 <pre class="highlight go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
@@ -701,6 +740,7 @@ All collection requests except retrieval must be <a href="#authentication">authe
 </span></code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/collections"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -d <span class="s1">'{"alias": "new-blog", "title": "The Best Blog Ever"}'</span>
 </code></pre>
@@ -817,6 +857,10 @@ All collection requests except retrieval must be <a href="#authentication">authe
 </span></code></pre>
 
 <p>This retrieves a collection and its metadata.</p>
+
+<h3 id="authentication">Authentication</h3>
+
+<p>Collections can be retrieved without authentication. However, <a href="#authentication">authentication</a> is required for retrieving a private collection or one with scheduled posts.</p>
 
 <h3 id="definition">Definition</h3>
 
@@ -985,6 +1029,10 @@ All collection requests except retrieval must be <a href="#authentication">authe
 </span></code></pre>
 
 <p>This retrieves a collection&rsquo;s posts along with the collection&rsquo;s data.</p>
+
+<h3 id="authentication">Authentication</h3>
+
+<p>Collection posts can be retrieved without authentication. However, <a href="#authentication">authentication</a> is required for retrieving a private collection or one with scheduled posts.</p>
 
 <h3 id="definition">Definition</h3>
 
@@ -1220,7 +1268,7 @@ All collection requests except retrieval must be <a href="#authentication">authe
 
 <p>Authenticates a user with Write.as, creating an access token for future authenticated requests.</p>
 
-<p>Users can only authenticate with their primary account, i.e. the first collection/blog they created, which may or may not have multiple collections associated with it.</p>
+<p>Users can only authenticate with the username of their primary account, i.e. the first collection/blog they created, which may or may not have multiple collections associated with it. No useful error is returned if a user tries logging in with a secondary collection, to protect privacy.</p>
 
 <h3 id="definition">Definition</h3>
 
@@ -1293,6 +1341,7 @@ All collection requests except retrieval must be <a href="#authentication">authe
 </span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
 </span></code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/me"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -X GET
 </code></pre>
@@ -1303,12 +1352,7 @@ All collection requests except retrieval must be <a href="#authentication">authe
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt@example.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-03T02:41:19Z"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1319,38 +1363,18 @@ All collection requests except retrieval must be <a href="#authentication">authe
 
 <h3 id="arguments">Arguments</h3>
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>alias</strong></td>
-<td>string</td>
-<td>yes</td>
-<td>The user&rsquo;s username / alias.</td>
-</tr>
-<tr>
-<td><strong>pass</strong></td>
-<td>string</td>
-<td>yes</td>
-<td>The user&rsquo;s password.</td>
-</tr>
-</tbody></table>
+<p>None.</p>
 
 <h3 id="returns">Returns</h3>
 
-<p>An authenticated user&rsquo;s full data.</p>
+<p>An authenticated user&rsquo;s basic data.</p>
 
 <h3 id="errors">Errors</h3>
 
 <p>Errors are returned with a user-friendly error message.</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Incorrect password."</span><span class="w">
+  </span><span class="nt">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid access token."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1361,8 +1385,8 @@ All collection requests except retrieval must be <a href="#authentication">authe
 </tr>
 </thead><tbody>
 <tr>
-<td>404</td>
-<td>User doesn&rsquo;t exist.</td>
+<td>401</td>
+<td>Access token is invalid or expired.</td>
 </tr>
 </tbody></table>
 
@@ -1461,6 +1485,70 @@ All collection requests except retrieval must be <a href="#authentication">authe
 </tr>
 </tbody></table>
 
+<h2 id="retrieve-user-39-s-collections">Retrieve User&rsquo;s Collections</h2>
+<pre class="highlight go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
+</span><span class="c">// Use curl command or contribute at:</span><span class="x">
+</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+</span></code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://write.as/api/me/collections"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -X GET
+</code></pre>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My great blog!"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt-7e7euebput9t5jr3v4csgferutf@writeas.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://write.as/matt/"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="definition">Definition</h3>
+
+<p><code class="prettyprint">GET https://write.as/api/me/collections</code></p>
+
+<h3 id="arguments">Arguments</h3>
+
+<p>None.</p>
+
+<h3 id="returns">Returns</h3>
+
+<p>All of an authenticated user&rsquo;s owned collections.</p>
+
+<h3 id="errors">Errors</h3>
+
+<p>Errors are returned with a user-friendly error message.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid access token."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>401</td>
+<td>Access token is invalid or expired.</td>
+</tr>
+</tbody></table>
+
 <h1 id="integrations">Integrations</h1>
 
 <p>Write.as integrates with other services on the web to provide features like crossposting upon publishing a Write.as post.</p>
@@ -1517,6 +1605,7 @@ Soon you&rsquo;ll be able to retrieve a user&rsquo;s connected accounts, so this
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
                 <a href="#" data-language-name="go">go</a>
+                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
