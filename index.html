@@ -209,7 +209,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <a href="https://write.as"><img src="images/logo.png" class="logo" alt="Logo" /></a>
+      <div style="text-align:center"><a href="https://developers.write.as"><img src="images/logo.png" class="logo" alt="Logo" /></a></div>
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="go">go</a>
@@ -272,6 +272,9 @@
                     <a href="#delete-a-collection" class="toc-h2 toc-link" data-title="Delete a Collection">Delete a Collection</a>
                   </li>
                   <li>
+                    <a href="#retrieve-a-collection-post" class="toc-h2 toc-link" data-title="Retrieve a Collection Post">Retrieve a Collection Post</a>
+                  </li>
+                  <li>
                     <a href="#publish-a-collection-post" class="toc-h2 toc-link" data-title="Publish a Collection Post">Publish a Collection Post</a>
                   </li>
                   <li>
@@ -295,6 +298,9 @@
                     <a href="#authenticate-a-user" class="toc-h2 toc-link" data-title="Authenticate a User">Authenticate a User</a>
                   </li>
                   <li>
+                    <a href="#log-user-out" class="toc-h2 toc-link" data-title="Log User Out">Log User Out</a>
+                  </li>
+                  <li>
                     <a href="#retrieve-authenticated-user" class="toc-h2 toc-link" data-title="Retrieve Authenticated User">Retrieve Authenticated User</a>
                   </li>
                   <li>
@@ -302,6 +308,9 @@
                   </li>
                   <li>
                     <a href="#retrieve-user-39-s-collections" class="toc-h2 toc-link" data-title="Retrieve User's Collections">Retrieve User's Collections</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-user-39-s-channels" class="toc-h2 toc-link" data-title="Retrieve User's Channels">Retrieve User's Channels</a>
                   </li>
               </ul>
           </li>
@@ -315,8 +324,12 @@
           </li>
       </div>
         <ul class="toc-footer">
+            <li><a href='https://developers.write.as'>Developers Write.as</a></li>
+            <li><a href='https://m.abunchtell.com/@writeas_dev'>@writeas_dev on Mastodon</a></li>
+            <li><a href='https://writing.exchange/@write_as'>@write_as on Mastodon</a></li>
             <li><a href='https://twitter.com/writeas__'>@writeas__</a></li>
             <li><a href='https://write.as/blog/'>Updates</a></li>
+            <li><a href='https://write.as'>Write.as</a></li>
             <li><a href='https://github.com/lord/slate'>Docs by Slate</a></li>
         </ul>
     </div>
@@ -335,7 +348,7 @@
 <p>These are our official libraries in different programming languages.</p>
 
 <ul>
-<li><strong>Go</strong> - <code>go get github.com/writeas/go-writeas</code> &middot; <a href="https://godoc.org/github.com/writeas/go-writeas">GoDoc</a> &middot; <a href="https://github.com/writeas/go-writeas">GitHub</a></li>
+<li><strong>Go</strong> - <code>go get go.code.as/writeas.v1</code> &middot; <a href="https://godoc.org/go.code.as/writeas.v1">GoDoc</a> &middot; <a href="https://github.com/writeas/go-writeas">GitHub</a></li>
 <li><strong>Java</strong> - <a href="https://github.com/writeas/java-writeas">GitHub</a></li>
 </ul>
 
@@ -488,7 +501,7 @@ Replace <code>00000000-0000-0000-0000-000000000000</code> with a user's access t
 </tr>
 </tbody></table>
 <h2 id='publish-a-post'>Publish a Post</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">p</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">CreatePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
+</span><span class="n">p</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">CreatePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
     </span><span class="n">Title</span><span class="o">:</span><span class="x">   </span><span class="s">"My First Post"</span><span class="p">,</span><span class="x">
     </span><span class="n">Content</span><span class="o">:</span><span class="x"> </span><span class="s">"This is a post."</span><span class="p">,</span><span class="x">
 </span><span class="p">})</span><span class="x">
@@ -531,7 +544,7 @@ Replace <code>00000000-0000-0000-0000-000000000000</code> with a user's access t
 When the request is unauthenticated, the client should store the <code>token</code> returned from this request so users can modify their post later. Otherwise it isn't necessary.
 </aside>
 <h3 id='definition'>Definition</h3>
-<p><code>POST https://write.as/api/posts</code></p>
+<p><code>POST /api/posts</code></p>
 <h3 id='arguments'>Arguments</h3>
 <table><thead>
 <tr>
@@ -572,6 +585,12 @@ When the request is unauthenticated, the client should store the <code>token</co
 <td>Whether or not the content should be display right-to-left, for example if written in Arabic or Hebrew.</td>
 </tr>
 <tr>
+<td><strong>created</strong></td>
+<td>date</td>
+<td>no</td>
+<td>An optional <em>published</em> date for the post, formatted <code>2006-01-02T15:04:05Z</code>.</td>
+</tr>
+<tr>
 <td><strong>crosspost</strong></td>
 <td>array</td>
 <td>no</td>
@@ -606,9 +625,9 @@ When the request is unauthenticated, the client should store the <code>token</co
 </span></code></pre>
 <p>This retrieves a post entity. It includes extra Write.as data, such as page views and extracted hashtags.</p>
 <h3 id='definition-2'>Definition</h3>
-<p><code>GET https://write.as/api/posts/{POST_ID}</code></p>
+<p><code>GET /api/posts/{POST_ID}</code></p>
 <h2 id='update-a-post'>Update a Post</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">p</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">UpdatePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
+</span><span class="n">p</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">UpdatePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
     </span><span class="n">ID</span><span class="o">:</span><span class="x">      </span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span><span class="x">
     </span><span class="n">Token</span><span class="o">:</span><span class="x">   </span><span class="s">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="x">
     </span><span class="n">Content</span><span class="o">:</span><span class="x"> </span><span class="s">"My post is updated."</span><span class="p">,</span><span class="x">
@@ -631,7 +650,7 @@ When the request is unauthenticated, the client should store the <code>token</co
     </span><span class="s2">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:05Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is an updated post."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My post is updated."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">  
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
@@ -646,7 +665,7 @@ When the request is unauthenticated, the client should store the <code>token</co
 If done anonymously, it requires past knowledge of the existing post's <code>token</code>.
 </aside>
 <h3 id='definition-3'>Definition</h3>
-<p><code>POST https://write.as/api/posts/{POST_ID}</code></p>
+<p><code>POST /api/posts/{POST_ID}</code></p>
 <h3 id='arguments-2'>Arguments</h3>
 <table><thead>
 <tr>
@@ -713,7 +732,7 @@ If done anonymously, it requires past knowledge of the existing post's <code>tok
 
 <p>The client will likely want to maintain what was in the body before the post was unpublished so it can be restored later.</p>
 <h3 id='definition-4'>Definition</h3>
-<p><code>POST https://write.as/api/posts/{POST_ID}</code></p>
+<p><code>POST /api/posts/{POST_ID}</code></p>
 <h3 id='arguments-3'>Arguments</h3>
 <table><thead>
 <tr>
@@ -733,7 +752,7 @@ If done anonymously, it requires past knowledge of the existing post's <code>tok
 <h3 id='returns-3'>Returns</h3>
 <p>An error <code>410</code> with a message: <em>Post unpublished by author.</em></p>
 <h2 id='delete-a-post'>Delete a Post</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">DeletePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
+</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">DeletePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
     </span><span class="n">ID</span><span class="o">:</span><span class="x">    </span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span><span class="x">
     </span><span class="n">Token</span><span class="o">:</span><span class="x"> </span><span class="s">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="x">
 </span><span class="p">})</span><span class="x">
@@ -746,7 +765,7 @@ If done anonymously, it requires past knowledge of the existing post's <code>tok
 
 <p>This deletes a post.</p>
 <h3 id='definition-5'>Definition</h3>
-<p><code>DELETE https://write.as/api/posts/{POST_ID}</code></p>
+<p><code>DELETE /api/posts/{POST_ID}</code></p>
 <h3 id='arguments-4'>Arguments</h3>
 <table><thead>
 <tr>
@@ -785,7 +804,7 @@ If done anonymously, it requires past knowledge of the existing post's <code>tok
 
 <p>This adds unowned posts to a Write.as user / account.</p>
 <h3 id='definition-6'>Definition</h3>
-<p><code>POST https://write.as/api/posts/claim</code></p>
+<p><code>POST /api/posts/claim</code></p>
 <h3 id='arguments-5'>Arguments</h3>
 <p>The body should contain an array of objects with these parameters:</p>
 
@@ -843,13 +862,14 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-blog-wjn6epspzjqankz41mlfvz@writeas.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"total_posts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This creates a new collection. <strong>Casual or Pro user required</strong>.</p>
 <h3 id='definition-7'>Definition</h3>
-<p><code>POST https://write.as/api/collections</code></p>
+<p><code>POST /api/collections</code></p>
 <h3 id='arguments-6'>Arguments</h3>
 <p>If only a <code>title</code> is given, the <code>alias</code> will be generated on the server from it. Clients should store the returned <code>alias</code> for future operations.</p>
 
@@ -924,6 +944,8 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
     </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Blog Ever"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
     </span><span class="s2">"total_posts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -932,7 +954,7 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <h3 id='authentication-4'>Authentication</h3>
 <p>Collections can be retrieved without authentication. However, <a href="#authentication">authentication</a> is required for retrieving a private collection or one with scheduled posts.</p>
 <h3 id='definition-8'>Definition</h3>
-<p><code>GET https://write.as/api/collections/{COLLECTION_ALIAS}</code></p>
+<p><code>GET /api/collections/{COLLECTION_ALIAS}</code></p>
 <h3 id='returns-7'>Returns</h3>
 <p>The requested collection.</p>
 <h2 id='delete-a-collection'>Delete a Collection</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
@@ -949,17 +971,53 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 
 <p>This permanently deletes a collection and makes any posts on it anonymous.</p>
 <h3 id='definition-9'>Definition</h3>
-<p><code>DELETE https://write.as/api/collections/{COLLECTION_ALIAS}</code></p>
+<p><code>DELETE /api/collections/{COLLECTION_ALIAS}</code></p>
 <h3 id='returns-8'>Returns</h3>
 <p>A <code>204</code> status code and no content in the body.</p>
-<h2 id='publish-a-collection-post'>Publish a Collection Post</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
+<h2 id='retrieve-a-collection-post'>Retrieve a Collection Post</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
 </span><span class="c">// Use curl command or contribute at:</span><span class="x">
 </span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl https://write.as/api/collections/new-blog/posts/my-first-post
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hjb7cvwaevy9eayp"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-first-post"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T14:29:33Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a blog post."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This retrieves a single post from a collection by the post&#39;s slug.</p>
+<h3 id='authentication-5'>Authentication</h3>
+<p>Collection posts can be retrieved without authentication. However, <a href="#authentication">authentication</a> is required for retrieving a post from a private collection.</p>
+<h3 id='definition-10'>Definition</h3>
+<p><code>GET /api/collections/{COLLECTION_ALIAS}/posts/{SLUG}</code></p>
+<h3 id='returns-9'>Returns</h3>
+<p>The requested collection post.</p>
+<h2 id='publish-a-collection-post'>Publish a Collection Post</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+</span><span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span><span class="x">
+</span><span class="n">p</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">CreatePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
+    </span><span class="n">Title</span><span class="o">:</span><span class="x">      </span><span class="s">"My First Post"</span><span class="p">,</span><span class="x">
+    </span><span class="n">Content</span><span class="o">:</span><span class="x">    </span><span class="s">"This is a post."</span><span class="p">,</span><span class="x">
+    </span><span class="n">Collection</span><span class="o">:</span><span class="x"> </span><span class="s">"new-blog"</span><span class="p">,</span><span class="x">
+</span><span class="p">})</span><span class="x">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog/posts"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
-  -d <span class="s1">'{"body": "This is a blog post.", "title": "My Post"}'</span>
+  -d <span class="s1">'{"body": "This is a blog post.", "title": "My First Post"}'</span>
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -977,13 +1035,21 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
     </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a post."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-blog"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Blog Ever"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://write.as/new-blog/"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This creates a new post and adds it to the given collection. User must be authenticated.</p>
-<h3 id='definition-10'>Definition</h3>
-<p><code>POST https://write.as/api/collections/{COLLECTION_ALIAS}/posts</code></p>
+<h3 id='definition-11'>Definition</h3>
+<p><code>POST /api/collections/{COLLECTION_ALIAS}/posts</code></p>
 <h3 id='arguments-7'>Arguments</h3>
 <p>This accepts the same arguments as <a href="#publish-a-post">anonymous posts</a>, plus an optional <code>crosspost</code> parameter.</p>
 
@@ -1026,13 +1092,19 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td>Whether or not the content should be display right-to-left, for example if written in Arabic or Hebrew.</td>
 </tr>
 <tr>
+<td><strong>created</strong></td>
+<td>date</td>
+<td>no</td>
+<td>An optional <em>published</em> date for the post, formatted <code>2006-01-02T15:04:05Z</code>.</td>
+</tr>
+<tr>
 <td><strong>crosspost</strong></td>
 <td>array</td>
 <td>no</td>
 <td>An array of integrations and associated usernames to post to. See <a href="#crossposting">Crossposting</a>.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-9'>Returns</h3>
+<h3 id='returns-10'>Returns</h3>
 <p>The newly created post.</p>
 <h2 id='retrieve-collection-posts'>Retrieve Collection Posts</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
 </span><span class="c">// Use curl command or contribute at:</span><span class="x">
@@ -1059,7 +1131,7 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
         </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T14:29:33Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Post"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a blog post."</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">],</span><span class="w">
@@ -1070,10 +1142,10 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This retrieves a collection&#39;s posts along with the collection&#39;s data.</p>
-<h3 id='authentication-5'>Authentication</h3>
+<h3 id='authentication-6'>Authentication</h3>
 <p>Collection posts can be retrieved without authentication. However, <a href="#authentication">authentication</a> is required for retrieving a private collection or one with scheduled posts.</p>
-<h3 id='definition-11'>Definition</h3>
-<p><code>GET https://write.as/api/collections/{COLLECTION_ALIAS}/posts</code></p>
+<h3 id='definition-12'>Definition</h3>
+<p><code>GET /api/collections/{COLLECTION_ALIAS}/posts</code></p>
 <h3 id='arguments-8'>Arguments</h3>
 <p>Query string parameters can be passed to affect post presentation.</p>
 
@@ -1092,7 +1164,7 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td>Desired post body format. Can be left blank for raw text, or <code>html</code> to get back HTML generated from Markdown.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-10'>Returns</h3>
+<h3 id='returns-11'>Returns</h3>
 <p>The requested collection and its posts in a <code>posts</code> array.</p>
 <h2 id='move-a-post-to-a-collection'>Move a Post to a Collection</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
 </span><span class="c">// Use curl command or contribute at:</span><span class="x">
@@ -1127,8 +1199,8 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This adds a group of posts to a collection. This works for either posts that were created anonymously (i.e. don&#39;t belong to the user account) or posts already owned by the user account.</p>
-<h3 id='definition-12'>Definition</h3>
-<p><code>POST https://write.as/api/collections/{COLLECTION_ALIAS}/collect</code></p>
+<h3 id='definition-13'>Definition</h3>
+<p><code>POST /api/collections/{COLLECTION_ALIAS}/collect</code></p>
 <h3 id='arguments-9'>Arguments</h3>
 <p>Pass an array of objects, each containing the following parameters:</p>
 
@@ -1153,11 +1225,14 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td>The post&#39;s modify token. *Required if the post doesn&#39;t belong to the requesting user.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-11'>Returns</h3>
-<p>A <code>200</code> at the top level for all requests. <code>data</code> contains an array of response envelopes: each with <code>code</code> and <code>post</code> (with full post data) on success, or <code>code</code> and <code>error_msg</code> on failure for any given post.</p>
-<h2 id='pin-a-post-to-a-collection'>Pin a Post to a Collection</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+<h3 id='returns-12'>Returns</h3>
+<p>A <code>200</code> at the top level for all valid, authenticated requests. <code>data</code> contains an array of response envelopes: each with <code>code</code> and <code>post</code> (with full post data) on success, or <code>code</code> and <code>error_msg</code> on failure for any given post.</p>
+<h2 id='pin-a-post-to-a-collection'>Pin a Post to a Collection</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+</span><span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span><span class="x">
+</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">PinPost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PinnedPostParams</span><span class="p">{</span><span class="x">
+    </span><span class="n">ID</span><span class="o">:</span><span class="x">       </span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span><span class="x">
+    </span><span class="n">Position</span><span class="o">:</span><span class="x"> </span><span class="m">1</span><span class="p">,</span><span class="x">
+</span><span class="p">})</span><span class="x">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog/pin"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -1178,8 +1253,8 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This pins a blog post to a collection. It&#39;ll show up as a navigation item in the collection/blog home page header, instead of on the blog itself.</p>
-<h3 id='definition-13'>Definition</h3>
-<p><code>POST https://write.as/api/collections/{COLLECTION_ALIAS}/pin</code></p>
+<h3 id='definition-14'>Definition</h3>
+<p><code>POST /api/collections/{COLLECTION_ALIAS}/pin</code></p>
 <h3 id='arguments-10'>Arguments</h3>
 <p>Pass an array of objects, each containing the following parameters:</p>
 
@@ -1201,14 +1276,16 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td><strong>position</strong></td>
 <td>integer</td>
 <td>no</td>
-<td>The numeric position in which to pin the post. Will pin at end of list if parameter not given.</td>
+<td>The numeric position in which to pin the post. Will pin at end of list if no parameter is given.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-12'>Returns</h3>
-<p>A <code>200</code> at the top level for all requests. <code>data</code> contains an array of response envelopes: each with <code>code</code> and <code>id</code>, plus <code>error_msg</code> on failure for any given post.</p>
-<h2 id='unpin-a-post-from-a-collection'>Unpin a Post from a Collection</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+<h3 id='returns-13'>Returns</h3>
+<p>A <code>200</code> at the top level for all valid, authenticated requests. <code>data</code> contains an array of response envelopes: each with <code>code</code> and <code>id</code>, plus <code>error_msg</code> on failure for any given post.</p>
+<h2 id='unpin-a-post-from-a-collection'>Unpin a Post from a Collection</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+</span><span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span><span class="x">
+</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">UnpinPost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PinnedPostParams</span><span class="p">{</span><span class="x">
+    </span><span class="n">ID</span><span class="o">:</span><span class="x"> </span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span><span class="x">
+</span><span class="p">})</span><span class="x">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog/unpin"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -1229,8 +1306,8 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This unpins a blog post from a collection. It&#39;ll remove the navigation item from the collection/blog home page header and put the post back on the blog itself.</p>
-<h3 id='definition-14'>Definition</h3>
-<p><code>POST https://write.as/api/collections/{COLLECTION_ALIAS}/unpin</code></p>
+<h3 id='definition-15'>Definition</h3>
+<p><code>POST /api/collections/{COLLECTION_ALIAS}/unpin</code></p>
 <h3 id='arguments-11'>Arguments</h3>
 <p>Pass an array of objects, each containing the following parameters:</p>
 
@@ -1249,8 +1326,8 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td>The ID of the post to unpin from the collection</td>
 </tr>
 </tbody></table>
-<h3 id='returns-13'>Returns</h3>
-<p>A <code>200</code> at the top level for all requests. <code>data</code> contains an array of response envelopes: each with <code>code</code> and <code>id</code>, plus <code>error_msg</code> on failure for any given post.</p>
+<h3 id='returns-14'>Returns</h3>
+<p>A <code>200</code> at the top level for all valid, authenticated requests. <code>data</code> contains an array of response envelopes: each with <code>code</code> and <code>id</code>, plus <code>error_msg</code> on failure for any given post.</p>
 <h1 id='users'>Users</h1>
 <p>Users have posts and collections associated with them that can be accessed across devices and browsers.</p>
 
@@ -1282,8 +1359,8 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <p>Authenticates a user with Write.as, creating an access token for future authenticated requests.</p>
 
 <p>Users can only authenticate with their primary account, i.e. the first collection/blog they created, which may or may not have multiple collections associated with it.</p>
-<h3 id='definition-15'>Definition</h3>
-<p><code>POST https://write.as/api/auth/login</code></p>
+<h3 id='definition-16'>Definition</h3>
+<p><code>POST /api/auth/login</code></p>
 <h3 id='arguments-12'>Arguments</h3>
 <table><thead>
 <tr>
@@ -1306,7 +1383,7 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td>The user&#39;s password.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-14'>Returns</h3>
+<h3 id='returns-15'>Returns</h3>
 <p>A user access token and the authenticated user&#39;s full data.</p>
 <h3 id='errors-3'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
@@ -1338,6 +1415,48 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td>You&#39;re trying to log in too many times too quickly. You shouldn&#39;t see this unless you&#39;re doing something bad (in which case, please stop that).</td>
 </tr>
 </tbody></table>
+<h2 id='log-user-out'>Log User Out</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+</span><span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span><span class="x">
+</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">LogOut</span><span class="p">()</span><span class="x">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/auth/me"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  -X DELETE
+</code></pre>
+<blockquote>
+<p>A successful deletion returns a <code>204</code> with no content in the body.</p>
+</blockquote>
+
+<p>Un-authenticates a user with Write.as, permanently invalidating the access token used with the request.</p>
+
+<aside class="warning">
+This is important for keeping accounts secure, so that users keep access to their account limited to as few devices as possible. <em>Always</em> consider building this functionality into your Write.as clients.
+</aside>
+<h3 id='definition-17'>Definition</h3>
+<p><code>DELETE /api/auth/me</code></p>
+<h3 id='returns-16'>Returns</h3>
+<p>A <code>204</code> status code and no content in the body.</p>
+<h3 id='errors-4'>Errors</h3>
+<p>Errors are returned with a user-friendly error message.</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Token is invalid."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Request is missing an access token / Authorization header</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Token is invalid.</td>
+</tr>
+</tbody></table>
 <h2 id='retrieve-authenticated-user'>Retrieve Authenticated User</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
 </span><span class="c">// Use curl command or contribute at:</span><span class="x">
 </span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
@@ -1355,13 +1474,13 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
     </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='definition-16'>Definition</h3>
-<p><code>GET https://write.as/api/me</code></p>
+</span></code></pre><h3 id='definition-18'>Definition</h3>
+<p><code>GET /api/me</code></p>
 <h3 id='arguments-13'>Arguments</h3>
 <p>None.</p>
-<h3 id='returns-15'>Returns</h3>
+<h3 id='returns-17'>Returns</h3>
 <p>An authenticated user&#39;s basic data.</p>
-<h3 id='errors-4'>Errors</h3>
+<h3 id='errors-5'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
@@ -1429,13 +1548,13 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='definition-17'>Definition</h3>
-<p><code>GET https://write.as/api/me/posts</code></p>
+</span></code></pre><h3 id='definition-19'>Definition</h3>
+<p><code>GET /api/me/posts</code></p>
 <h3 id='arguments-14'>Arguments</h3>
 <p>None.</p>
-<h3 id='returns-16'>Returns</h3>
+<h3 id='returns-18'>Returns</h3>
 <p>An array of the authenticated user&#39;s posts, including anonymous and collection posts.</p>
-<h3 id='errors-5'>Errors</h3>
+<h3 id='errors-6'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
@@ -1453,9 +1572,9 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td>Access token is invalid or expired.</td>
 </tr>
 </tbody></table>
-<h2 id='retrieve-user-39-s-collections'>Retrieve User&#39;s Collections</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+<h2 id='retrieve-user-39-s-collections'>Retrieve User&#39;s Collections</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
+</span><span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span><span class="x">
+</span><span class="n">colls</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">GetUserCollections</span><span class="p">()</span><span class="x">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/me/collections"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -1479,13 +1598,66 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='definition-18'>Definition</h3>
-<p><code>GET https://write.as/api/me/collections</code></p>
+</span></code></pre><h3 id='definition-20'>Definition</h3>
+<p><code>GET /api/me/collections</code></p>
 <h3 id='arguments-15'>Arguments</h3>
 <p>None.</p>
-<h3 id='returns-17'>Returns</h3>
+<h3 id='returns-19'>Returns</h3>
 <p>All of an authenticated user&#39;s owned collections.</p>
-<h3 id='errors-6'>Errors</h3>
+<h3 id='errors-7'>Errors</h3>
+<p>Errors are returned with a user-friendly error message.</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid access token."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>401</td>
+<td>Access token is invalid or expired.</td>
+</tr>
+</tbody></table>
+<h2 id='retrieve-user-39-s-channels'>Retrieve User&#39;s Channels</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
+</span><span class="c">// Use curl command or contribute at:</span><span class="x">
+</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/me/channels"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -X GET
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"twitter"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Twitter"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="s2">"ilikebeans"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"mastodon"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"writing.exchange"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"writing.exchange"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="s2">"matt"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='definition-21'>Definition</h3>
+<p><code>GET /api/me/channels</code></p>
+<h3 id='arguments-16'>Arguments</h3>
+<p>None.</p>
+<h3 id='returns-20'>Returns</h3>
+<p>An array of the authenticated user&#39;s connected channels, or <em>integrations</em>.</p>
+
+<p>For channels that aren&#39;t a centralized service, like Mastodon, you&#39;ll also see a <code>url</code> property of the specific instance or host that the user has connected to.</p>
+<h3 id='errors-8'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
