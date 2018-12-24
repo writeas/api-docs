@@ -287,6 +287,7 @@ If done anonymously, it requires past knowledge of the existing post's <code>tok
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
+**token** | string | maybe* | The post's modify token. *Required if not authenticated.
 **body** | string | yes | The content of the post.
 **title** | string | no | An optional title for the post. Supplying a parameter but leaving it blank will remove any title currently on the post.
 **font** | string | no | One of any post appearance types [listed above](#posts). If invalid, it doesn't change.
