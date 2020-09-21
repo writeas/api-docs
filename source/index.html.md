@@ -234,9 +234,7 @@ This retrieves a post entity. It includes extra Write.as data, such as page view
 
 ```go
 c := writeas.NewClient()
-p, err := c.UpdatePost(&writeas.PostParams{
-	ID:      "rf3t35fkax0aw",
-	Token:   "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M",
+p, err := c.UpdatePost("rf3t35fkax0aw", "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M", &writeas.PostParams{
 	Content: "My post is updated.",
 })
 ```
@@ -350,10 +348,7 @@ An error `410` with a message: _Post unpublished by author._
 
 ```go
 c := writeas.NewClient()
-err := c.DeletePost(&writeas.PostParams{
-	ID:    "rf3t35fkax0aw",
-	Token: "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M",
-})
+err := c.DeletePost("rf3t35fkax0aw", "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M")
 ```
 
 ```shell
@@ -1111,9 +1106,9 @@ Error Code | Meaning
 ## Retrieve User's Posts
 
 ```go
-// Currently unsupported in the Go client.
-// Use curl command or contribute at:
-//   https://github.com/writeas/writeas-go
+c := writeas.NewClient()
+c.SetToken("00000000-0000-0000-0000-000000000000")
+p, err := c.GetUserPosts()
 ```
 
 ```shell
