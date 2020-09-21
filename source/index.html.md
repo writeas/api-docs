@@ -102,6 +102,63 @@ Replace <code>00000000-0000-0000-0000-000000000000</code> with a user's access t
 </aside>
 
 
+# Formatting
+
+The bulk of formatting on Write.as is done with Markdown, a plain-text formatting syntax that converts to HTML.
+
+## Render Markdown
+
+```shell
+curl "https://write.as/api/markdown" \
+  -H "Content-Type: application/json" \
+  -X POST \
+  -d '{"raw_body": "This is *formatted* in __Markdown__."}'
+```
+
+> Example Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "body": "<p>This is the <em>formated</em> in <strong>Markdown</strong>.</p> ",
+  }
+}
+```
+
+This takes raw Markdown and renders it into usable HTML.
+
+### Definition
+
+`POST /api/markdown`
+
+### Arguments
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+**raw_body** | string | yes | The raw Markdown string.
+**collection_url** | string | no | If given, hashtags in the supplied Markdown will automatically be linked to the correct page on the given collection (blog).
+
+### Returns
+
+A `200` at the top level for all valid, authenticated requests. `data` contains **body**, the rendered HTML from the given Markdown.
+
+### Errors
+
+Errors are returned with a user-friendly error message.
+
+```json
+{
+  "code": 400,
+  "error_msg": "Expected valid JSON object."
+}
+```
+
+Error Code | Meaning
+---------- | -------
+400 | JSON parsing failed.
+
+
 # Posts
 
 Posts are the most basic entities on Write.as. Each can have its own appearance, and isn't connected to any other Write.as entity by default. They can exist without an owner (user), or with an owner but no collection, or with both an owner and collection.
@@ -711,7 +768,7 @@ curl https://write.as/api/collections/new-blog/posts
 > Example Response
 
 ```json
-{ 
+{
   "code": 200,
   "data": {  
     "alias": "new-blog",
@@ -1351,7 +1408,6 @@ ID | Integration
 twitter | Twitter
 tumblr | Tumblr
 medium | Medium
-
 
 ---
 
