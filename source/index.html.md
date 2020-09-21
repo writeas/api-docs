@@ -1376,7 +1376,7 @@ curl "https://write.as/api/markdown" \
   "code": 200,
   "data": {
     "body": "<p>This is the <em>formated</em> in <strong>Markdown</strong>.</p> ",
-       }
+  }
 }
 ```
 
