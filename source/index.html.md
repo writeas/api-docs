@@ -813,6 +813,7 @@ Query string parameters can be passed to affect post presentation.
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
 **body** | string | no | Desired post body format. Can be left blank for raw text, or `html` to get back HTML generated from Markdown.
+**page** | integer | no |  If a collection has more than 10 posts (1 page), it returns the page specified by number.
 
 ### Returns
 
