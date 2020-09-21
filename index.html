@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Write.as API Documentation</title>
 
-    <style>
+    <style media="screen">
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
 .highlight .gh {
@@ -42,7 +42,7 @@
 .highlight .cs {
   color: #75715e;
 }
-.highlight .c, .highlight .cd {
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
   color: #75715e;
 }
 .highlight .err {
@@ -126,7 +126,7 @@
 .highlight .s1 {
   color: #e6db74;
 }
-.highlight .s {
+.highlight .s, .highlight .sa, .highlight .dl {
   color: #e6db74;
 }
 .highlight .na {
@@ -141,16 +141,13 @@
 .highlight .ne {
   color: #a6e22e;
 }
-.highlight .nf {
+.highlight .nf, .highlight .fm {
   color: #a6e22e;
 }
 .highlight .vc {
   color: #ffffff;
 }
 .highlight .nn {
-  color: #ffffff;
-}
-.highlight .nl {
   color: #ffffff;
 }
 .highlight .ni {
@@ -165,7 +162,7 @@
 .highlight .vi {
   color: #ffffff;
 }
-.highlight .nv {
+.highlight .nv, .highlight .vm {
   color: #ffffff;
 }
 .highlight .w {
@@ -176,6 +173,9 @@
 }
 .highlight .n, .highlight .py, .highlight .nx {
   color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
 }
 .highlight .ow {
   color: #f92672;
@@ -196,20 +196,107 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-e359fcb7.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-2224a352.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-e9bde216.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
   </head>
 
   <body class="index" data-languages="[&quot;shell&quot;,&quot;go&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" alt="Navbar" />
+        <img src="images/navbar-cad8cdcb.png" alt="" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <div style="text-align:center"><a href="https://developers.write.as"><img src="images/logo.png" class="logo" alt="Logo" /></a></div>
+      <div style="text-align:center"><a href="https://developers.write.as"><img src="images/logo-e6b514d9.png" class="logo" alt="" /></a></div>
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="go">go</a>
@@ -218,7 +305,7 @@
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
-      <div id="toc" class="toc-list-h1">
+      <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
               <ul class="toc-list-h2">
@@ -322,7 +409,7 @@
                   </li>
               </ul>
           </li>
-      </div>
+      </ul>
         <ul class="toc-footer">
             <li><a href='https://developers.write.as'>Developers Write.as</a></li>
             <li><a href='https://m.abunchtell.com/@writeas_dev'>@writeas_dev on Mastodon</a></li>
@@ -361,11 +448,11 @@
 <blockquote>
 <p>Failed requests return with an error <code>code</code> and <code>error_msg</code>, like below.</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad request."</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad request."</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>The Write.as API uses conventional HTTP response codes to indicate the status of an API request. Codes in the <code>2xx</code> range indicate success or that more information is available in the returned data, in the case of bulk actions.
 Codes in the <code>4xx</code> range indicate that the request failed with the information provided. Codes in the <code>5xx</code> range indicate an error with the Write.as servers (you shouldn&#39;t see many of these).</p>
 
@@ -412,12 +499,12 @@ Codes in the <code>4xx</code> range indicate that the request failed with the in
 <blockquote>
 <p>Successful requests return with a <code>code</code> in the <code>2xx</code> range and a <code>data</code> object or array, depending on the request.</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>All responses are returned in a JSON object containing two fields:</p>
 
 <table><thead>
@@ -500,36 +587,36 @@ Replace <code>00000000-0000-0000-0000-000000000000</code> with a user's access t
 <td>paste.as</td>
 </tr>
 </tbody></table>
-<h2 id='publish-a-post'>Publish a Post</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">p</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">CreatePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
-    </span><span class="n">Title</span><span class="o">:</span><span class="x">   </span><span class="s">"My First Post"</span><span class="p">,</span><span class="x">
-    </span><span class="n">Content</span><span class="o">:</span><span class="x"> </span><span class="s">"This is a post."</span><span class="p">,</span><span class="x">
-</span><span class="p">})</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/posts"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -d <span class="s1">'{"body": "This is a post.", "title": "My First Post"}'</span>
-</code></pre>
+<h2 id='publish-a-post'>Publish a Post</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
+<span class="n">p</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">CreatePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PostParams</span><span class="p">{</span>
+    <span class="n">Title</span><span class="o">:</span>   <span class="s">"My First Post"</span><span class="p">,</span>
+    <span class="n">Content</span><span class="o">:</span> <span class="s">"This is a post."</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/posts"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"body": "This is a post.", "title": "My First Post"}'</span>
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:46Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a post."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:46Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a post."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This creates a new post, associating it with a user account if authenticated. If the request is successful, the post will be available all of these locations:</p>
 
 <ul>
@@ -599,64 +686,62 @@ When the request is unauthenticated, the client should store the <code>token</co
 </tbody></table>
 <h3 id='returns'>Returns</h3>
 <p>The newly created post.</p>
-<h2 id='retrieve-a-post'>Retrieve a Post</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">p</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">GetPost</span><span class="p">(</span><span class="s">"rf3t35fkax0aw"</span><span class="p">)</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl https://write.as/api/posts/rf3t35fkax0aw
-</code></pre>
+<h2 id='retrieve-a-post'>Retrieve a Post</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
+<span class="n">p</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">GetPost</span><span class="p">(</span><span class="s">"rf3t35fkax0aw"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://write.as/api/posts/rf3t35fkax0aw
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:05Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a post."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">  
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:05Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a post."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">  
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="nl">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This retrieves a post entity. It includes extra Write.as data, such as page views and extracted hashtags.</p>
 <h3 id='definition-2'>Definition</h3>
 <p><code>GET /api/posts/{POST_ID}</code></p>
-<h2 id='update-a-post'>Update a Post</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">p</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">UpdatePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
-    </span><span class="n">ID</span><span class="o">:</span><span class="x">      </span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span><span class="x">
-    </span><span class="n">Token</span><span class="o">:</span><span class="x">   </span><span class="s">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="x">
-    </span><span class="n">Content</span><span class="o">:</span><span class="x"> </span><span class="s">"My post is updated."</span><span class="p">,</span><span class="x">
-</span><span class="p">})</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/posts/rf3t35fkax0aw"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -d <span class="s1">'{"token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M", "body": "My post is updated."}'</span>
-</code></pre>
+<h2 id='update-a-post'>Update a Post</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
+<span class="n">p</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">UpdatePost</span><span class="p">(</span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span> <span class="s">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PostParams</span><span class="p">{</span>
+    <span class="n">Content</span><span class="o">:</span> <span class="s">"My post is updated."</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/posts/rf3t35fkax0aw"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M", "body": "My post is updated."}'</span>
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:05Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My post is updated."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">  
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:05Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My post is updated."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">  
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="nl">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This updates an existing post.</p>
 <h3 id='authentication-3'>Authentication</h3>
 <p>This can be done anonymously or while <a href="#authentication">authenticated</a>.</p>
@@ -675,6 +760,12 @@ If done anonymously, it requires past knowledge of the existing post's <code>tok
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><strong>token</strong></td>
+<td>string</td>
+<td>maybe*</td>
+<td>The post&#39;s modify token. *Required if not authenticated.</td>
+</tr>
 <tr>
 <td><strong>body</strong></td>
 <td>string</td>
@@ -708,22 +799,22 @@ If done anonymously, it requires past knowledge of the existing post's <code>tok
 </tbody></table>
 <h3 id='returns-2'>Returns</h3>
 <p>The entire post as it stands after the update.</p>
-<h2 id='unpublish-a-post'>Unpublish a Post</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/posts/rf3t35fkax0aw"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -d <span class="s1">'{"token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M", "body": ""}'</span>
-</code></pre>
+<h2 id='unpublish-a-post'>Unpublish a Post</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span>
+<span class="c">// Use curl command or contribute at:</span>
+<span class="c">//   https://github.com/writeas/writeas-go</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/posts/rf3t35fkax0aw"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M", "body": ""}'</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">410</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Post unpublished by author."</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">410</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Post unpublished by author."</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <aside class="warning">
 <strong>Unfinalized design</strong>.
 </aside>
@@ -751,14 +842,11 @@ If done anonymously, it requires past knowledge of the existing post's <code>tok
 </tbody></table>
 <h3 id='returns-3'>Returns</h3>
 <p>An error <code>410</code> with a message: <em>Post unpublished by author.</em></p>
-<h2 id='delete-a-post'>Delete a Post</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">DeletePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
-    </span><span class="n">ID</span><span class="o">:</span><span class="x">    </span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span><span class="x">
-    </span><span class="n">Token</span><span class="o">:</span><span class="x"> </span><span class="s">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="x">
-</span><span class="p">})</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/posts/rf3t35fkax0aw?token=ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span> <span class="se">\</span>
-  -X DELETE
-</code></pre>
+<h2 id='delete-a-post'>Delete a Post</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
+<span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">DeletePost</span><span class="p">(</span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span> <span class="s">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/posts/rf3t35fkax0aw?token=ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span> <span class="se">\</span>
+  <span class="nt">-X</span> DELETE
+</code></pre></div>
 <blockquote>
 <p>A successful deletion returns a <code>204</code> with no content in the body.</p>
 </blockquote>
@@ -784,20 +872,20 @@ If done anonymously, it requires past knowledge of the existing post's <code>tok
 </tbody></table>
 <h3 id='returns-4'>Returns</h3>
 <p>A <code>204</code> status code and no content in the body.</p>
-<h2 id='claim-posts'>Claim Posts</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span><span class="x">
-</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">ClaimPosts</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[]</span><span class="n">OwnedPostParams</span><span class="p">{</span><span class="x">
-    </span><span class="p">{</span><span class="x">
-        </span><span class="n">ID</span><span class="o">:</span><span class="x">    </span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span><span class="x">
-        </span><span class="n">Token</span><span class="o">:</span><span class="x"> </span><span class="s">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="x">
-    </span><span class="p">},</span><span class="x">
-</span><span class="p">})</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/posts/claim"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -d <span class="s1">'[{"id": "rf3t35fkax0aw", "token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"}]'</span>
-</code></pre>
+<h2 id='claim-posts'>Claim Posts</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span>
+<span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">ClaimPosts</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[]</span><span class="n">OwnedPostParams</span><span class="p">{</span>
+    <span class="p">{</span>
+        <span class="n">ID</span><span class="o">:</span>    <span class="s">"rf3t35fkax0aw"</span><span class="p">,</span>
+        <span class="n">Token</span><span class="o">:</span> <span class="s">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">})</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/posts/claim"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'[{"id": "rf3t35fkax0aw", "token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"}]'</span>
+</code></pre></div>
 <blockquote>
 <p>Always returns a <code>200</code></p>
 </blockquote>
@@ -839,34 +927,34 @@ If done anonymously, it requires past knowledge of the existing post's <code>tok
 <aside class="notice">
 All collection requests must be <a href="#authentication">authenticated</a>, except for retrieval when a collection is <strong>not</strong> private.
 </aside>
-<h2 id='create-a-collection'>Create a Collection</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span><span class="x">
-</span><span class="n">coll</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">CreateCollection</span><span class="p">(</span><span class="o">&amp;</span><span class="n">CollectionParams</span><span class="p">{</span><span class="x">
-    </span><span class="n">Alias</span><span class="o">:</span><span class="x"> </span><span class="s">"new-blog"</span><span class="p">,</span><span class="x">
-    </span><span class="n">Title</span><span class="o">:</span><span class="x"> </span><span class="s">"The Best Blog Ever"</span><span class="p">,</span><span class="x">
-</span><span class="p">})</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/collections"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -d <span class="s1">'{"alias": "new-blog", "title": "The Best Blog Ever"}'</span>
-</code></pre>
+<h2 id='create-a-collection'>Create a Collection</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span>
+<span class="n">coll</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">CreateCollection</span><span class="p">(</span><span class="o">&amp;</span><span class="n">CollectionParams</span><span class="p">{</span>
+    <span class="n">Alias</span><span class="o">:</span> <span class="s">"new-blog"</span><span class="p">,</span>
+    <span class="n">Title</span><span class="o">:</span> <span class="s">"The Best Blog Ever"</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/collections"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"alias": "new-blog", "title": "The Best Blog Ever"}'</span>
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-blog"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Blog Ever"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-blog-wjn6epspzjqankz41mlfvz@writeas.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total_posts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-blog"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Blog Ever"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-blog-wjn6epspzjqankz41mlfvz@writeas.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_posts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This creates a new collection. <strong>Casual or Pro user required</strong>.</p>
 <h3 id='definition-7'>Definition</h3>
 <p><code>POST /api/collections</code></p>
@@ -898,11 +986,11 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <p>The newly created collection.</p>
 <h3 id='errors-2'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You must be a Pro user to do that."</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You must be a Pro user to do that."</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Error Code</th>
@@ -930,26 +1018,26 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td>You&#39;ve reached the maximum number of collections allowed.</td>
 </tr>
 </tbody></table>
-<h2 id='retrieve-a-collection'>Retrieve a Collection</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">coll</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">GetCollection</span><span class="p">(</span><span class="s">"new-blog"</span><span class="p">)</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl https://write.as/api/collections/new-blog
-</code></pre>
+<h2 id='retrieve-a-collection'>Retrieve a Collection</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
+<span class="n">coll</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">GetCollection</span><span class="p">(</span><span class="s">"new-blog"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://write.as/api/collections/new-blog
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-blog"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Blog Ever"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total_posts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-blog"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Blog Ever"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_posts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This retrieves a collection and its metadata.</p>
 <h3 id='authentication-4'>Authentication</h3>
 <p>Collections can be retrieved without authentication. However, <a href="#authentication">authentication</a> is required for retrieving a private collection or one with scheduled posts.</p>
@@ -957,14 +1045,14 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <p><code>GET /api/collections/{COLLECTION_ALIAS}</code></p>
 <h3 id='returns-7'>Returns</h3>
 <p>The requested collection.</p>
-<h2 id='delete-a-collection'>Delete a Collection</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl https://write.as/api/collections/new-blog <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X DELETE
-</code></pre>
+<h2 id='delete-a-collection'>Delete a Collection</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span>
+<span class="c">// Use curl command or contribute at:</span>
+<span class="c">//   https://github.com/writeas/writeas-go</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://write.as/api/collections/new-blog <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> DELETE
+</code></pre></div>
 <blockquote>
 <p>A successful deletion returns a <code>204</code> with no content in the body.</p>
 </blockquote>
@@ -974,31 +1062,31 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <p><code>DELETE /api/collections/{COLLECTION_ALIAS}</code></p>
 <h3 id='returns-8'>Returns</h3>
 <p>A <code>204</code> status code and no content in the body.</p>
-<h2 id='retrieve-a-collection-post'>Retrieve a Collection Post</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl https://write.as/api/collections/new-blog/posts/my-first-post
-</code></pre>
+<h2 id='retrieve-a-collection-post'>Retrieve a Collection Post</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span>
+<span class="c">// Use curl command or contribute at:</span>
+<span class="c">//   https://github.com/writeas/writeas-go</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://write.as/api/collections/new-blog/posts/my-first-post
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hjb7cvwaevy9eayp"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-first-post"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T14:29:33Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a blog post."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hjb7cvwaevy9eayp"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-first-post"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T14:29:33Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a blog post."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="nl">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This retrieves a single post from a collection by the post&#39;s slug.</p>
 <h3 id='authentication-5'>Authentication</h3>
 <p>Collection posts can be retrieved without authentication. However, <a href="#authentication">authentication</a> is required for retrieving a post from a private collection.</p>
@@ -1006,47 +1094,47 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <p><code>GET /api/collections/{COLLECTION_ALIAS}/posts/{SLUG}</code></p>
 <h3 id='returns-9'>Returns</h3>
 <p>The requested collection post.</p>
-<h2 id='publish-a-collection-post'>Publish a Collection Post</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span><span class="x">
-</span><span class="n">p</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">CreatePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PostParams</span><span class="p">{</span><span class="x">
-    </span><span class="n">Title</span><span class="o">:</span><span class="x">      </span><span class="s">"My First Post"</span><span class="p">,</span><span class="x">
-    </span><span class="n">Content</span><span class="o">:</span><span class="x">    </span><span class="s">"This is a post."</span><span class="p">,</span><span class="x">
-    </span><span class="n">Collection</span><span class="o">:</span><span class="x"> </span><span class="s">"new-blog"</span><span class="p">,</span><span class="x">
-</span><span class="p">})</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog/posts"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -d <span class="s1">'{"body": "This is a blog post.", "title": "My First Post"}'</span>
-</code></pre>
+<h2 id='publish-a-collection-post'>Publish a Collection Post</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span>
+<span class="n">p</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">CreatePost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PostParams</span><span class="p">{</span>
+    <span class="n">Title</span><span class="o">:</span>      <span class="s">"My First Post"</span><span class="p">,</span>
+    <span class="n">Content</span><span class="o">:</span>    <span class="s">"This is a post."</span><span class="p">,</span>
+    <span class="n">Collection</span><span class="o">:</span> <span class="s">"new-blog"</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog/posts"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"body": "This is a blog post.", "title": "My First Post"}'</span>
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-first-post"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:46Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a post."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-first-post"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:46Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a post."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-blog"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Blog Ever"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://write.as/new-blog/"</span><span class="w">
+    </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-blog"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Blog Ever"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://write.as/new-blog/"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This creates a new post and adds it to the given collection. User must be authenticated.</p>
 <h3 id='definition-11'>Definition</h3>
 <p><code>POST /api/collections/{COLLECTION_ALIAS}/posts</code></p>
@@ -1106,41 +1194,41 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 </tbody></table>
 <h3 id='returns-10'>Returns</h3>
 <p>The newly created post.</p>
-<h2 id='retrieve-collection-posts'>Retrieve Collection Posts</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl https://write.as/api/collections/new-blog/posts
-</code></pre>
+<h2 id='retrieve-collection-posts'>Retrieve Collection Posts</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span>
+<span class="c">// Use curl command or contribute at:</span>
+<span class="c">//   https://github.com/writeas/writeas-go</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://write.as/api/collections/new-blog/posts
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">  
-    </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-blog"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Blog Ever"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total_posts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"posts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">  
+    </span><span class="nl">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-blog"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Blog Ever"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_posts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"posts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hjb7cvwaevy9eayp"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-first-post"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T14:29:33Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a blog post."</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hjb7cvwaevy9eayp"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-first-post"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T14:29:33Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a blog post."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="nl">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This retrieves a collection&#39;s posts along with the collection&#39;s data.</p>
 <h3 id='authentication-6'>Authentication</h3>
 <p>Collection posts can be retrieved without authentication. However, <a href="#authentication">authentication</a> is required for retrieving a private collection or one with scheduled posts.</p>
@@ -1166,38 +1254,38 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 </tbody></table>
 <h3 id='returns-11'>Returns</h3>
 <p>The requested collection and its posts in a <code>posts</code> array.</p>
-<h2 id='move-a-post-to-a-collection'>Move a Post to a Collection</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog/collect"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -d <span class="s1">'[{"id": "rf3t35fkax0aw", "token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"}]'</span>
-</code></pre>
+<h2 id='move-a-post-to-a-collection'>Move a Post to a Collection</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span>
+<span class="c">// Use curl command or contribute at:</span>
+<span class="c">//   https://github.com/writeas/writeas-go</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog/collect"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'[{"id": "rf3t35fkax0aw", "token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"}]'</span>
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-first-post"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:46Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a post."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-first-post"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:46Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a post."</span><span class="p">,</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This adds a group of posts to a collection. This works for either posts that were created anonymously (i.e. don&#39;t belong to the user account) or posts already owned by the user account.</p>
 <h3 id='definition-13'>Definition</h3>
 <p><code>POST /api/collections/{COLLECTION_ALIAS}/collect</code></p>
@@ -1227,31 +1315,31 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 </tbody></table>
 <h3 id='returns-12'>Returns</h3>
 <p>A <code>200</code> at the top level for all valid, authenticated requests. <code>data</code> contains an array of response envelopes: each with <code>code</code> and <code>post</code> (with full post data) on success, or <code>code</code> and <code>error_msg</code> on failure for any given post.</p>
-<h2 id='pin-a-post-to-a-collection'>Pin a Post to a Collection</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span><span class="x">
-</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">PinPost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PinnedPostParams</span><span class="p">{</span><span class="x">
-    </span><span class="n">ID</span><span class="o">:</span><span class="x">       </span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span><span class="x">
-    </span><span class="n">Position</span><span class="o">:</span><span class="x"> </span><span class="m">1</span><span class="p">,</span><span class="x">
-</span><span class="p">})</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog/pin"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -d <span class="s1">'[{"id": "rf3t35fkax0aw", "position": 1}]'</span>
-</code></pre>
+<h2 id='pin-a-post-to-a-collection'>Pin a Post to a Collection</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span>
+<span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">PinPost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PinnedPostParams</span><span class="p">{</span>
+    <span class="n">ID</span><span class="o">:</span>       <span class="s">"rf3t35fkax0aw"</span><span class="p">,</span>
+    <span class="n">Position</span><span class="o">:</span> <span class="m">1</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog/pin"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'[{"id": "rf3t35fkax0aw", "position": 1}]'</span>
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This pins a blog post to a collection. It&#39;ll show up as a navigation item in the collection/blog home page header, instead of on the blog itself.</p>
 <h3 id='definition-14'>Definition</h3>
 <p><code>POST /api/collections/{COLLECTION_ALIAS}/pin</code></p>
@@ -1281,30 +1369,30 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 </tbody></table>
 <h3 id='returns-13'>Returns</h3>
 <p>A <code>200</code> at the top level for all valid, authenticated requests. <code>data</code> contains an array of response envelopes: each with <code>code</code> and <code>id</code>, plus <code>error_msg</code> on failure for any given post.</p>
-<h2 id='unpin-a-post-from-a-collection'>Unpin a Post from a Collection</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span><span class="x">
-</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">UnpinPost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PinnedPostParams</span><span class="p">{</span><span class="x">
-    </span><span class="n">ID</span><span class="o">:</span><span class="x"> </span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span><span class="x">
-</span><span class="p">})</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog/unpin"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -d <span class="s1">'[{"id": "rf3t35fkax0aw"}]'</span>
-</code></pre>
+<h2 id='unpin-a-post-from-a-collection'>Unpin a Post from a Collection</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span>
+<span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">UnpinPost</span><span class="p">(</span><span class="o">&amp;</span><span class="n">writeas</span><span class="o">.</span><span class="n">PinnedPostParams</span><span class="p">{</span>
+    <span class="n">ID</span><span class="o">:</span> <span class="s">"rf3t35fkax0aw"</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog/unpin"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'[{"id": "rf3t35fkax0aw"}]'</span>
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This unpins a blog post from a collection. It&#39;ll remove the navigation item from the collection/blog home page header and put the post back on the blog itself.</p>
 <h3 id='definition-15'>Definition</h3>
 <p><code>POST /api/collections/{COLLECTION_ALIAS}/unpin</code></p>
@@ -1334,28 +1422,28 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <p>Having an account isn&#39;t necessary to interact with Write.as, but provides useful functionality impossible or difficult to implement client-side. It does come with the trade-off of anonymity for pseudonymity.</p>
 
 <p>However, Write.as is also set up to work well pseudo- and anonymously at the same time. If your client performs actions on behalf of a user, simply send the <code>Authorization</code> header for user actions and leave it off for anonymous requests, saving any published posts&#39; <code>token</code> like normal. Posts published anonymously can still be synced at any time, or never synced to ensure an account isn&#39;t associated with posts a user doesn&#39;t want to be associated with.</p>
-<h2 id='authenticate-a-user'>Authenticate a User</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">u</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">LogIn</span><span class="p">(</span><span class="s">"matt"</span><span class="p">,</span><span class="x"> </span><span class="s">"12345"</span><span class="p">)</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/auth/login"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -d <span class="s1">'{"alias": "matt", "pass": "12345"}'</span>
-</code></pre>
+<h2 id='authenticate-a-user'>Authenticate a User</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
+<span class="n">u</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">LogIn</span><span class="p">(</span><span class="s">"matt"</span><span class="p">,</span> <span class="s">"12345"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/auth/login"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"alias": "matt", "pass": "12345"}'</span>
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt@example.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-03T02:41:19Z"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-03T02:41:19Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>Authenticates a user with Write.as, creating an access token for future authenticated requests.</p>
 
 <p>Users can only authenticate with their primary account, i.e. the first collection/blog they created, which may or may not have multiple collections associated with it.</p>
@@ -1387,11 +1475,11 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <p>A user access token and the authenticated user&#39;s full data.</p>
 <h3 id='errors-3'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Incorrect password."</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Incorrect password."</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Error Code</th>
@@ -1415,13 +1503,13 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td>You&#39;re trying to log in too many times too quickly. You shouldn&#39;t see this unless you&#39;re doing something bad (in which case, please stop that).</td>
 </tr>
 </tbody></table>
-<h2 id='log-user-out'>Log User Out</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span><span class="x">
-</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">LogOut</span><span class="p">()</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/auth/me"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
-  -X DELETE
-</code></pre>
+<h2 id='log-user-out'>Log User Out</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span>
+<span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">LogOut</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/auth/me"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  <span class="nt">-X</span> DELETE
+</code></pre></div>
 <blockquote>
 <p>A successful deletion returns a <code>204</code> with no content in the body.</p>
 </blockquote>
@@ -1437,11 +1525,11 @@ This is important for keeping accounts secure, so that users keep access to thei
 <p>A <code>204</code> status code and no content in the body.</p>
 <h3 id='errors-4'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Token is invalid."</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Token is invalid."</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Error Code</th>
@@ -1457,24 +1545,24 @@ This is important for keeping accounts secure, so that users keep access to thei
 <td>Token is invalid.</td>
 </tr>
 </tbody></table>
-<h2 id='retrieve-authenticated-user'>Retrieve Authenticated User</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/me"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X GET
-</code></pre>
+<h2 id='retrieve-authenticated-user'>Retrieve Authenticated User</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span>
+<span class="c">// Use curl command or contribute at:</span>
+<span class="c">//   https://github.com/writeas/writeas-go</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/me"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='definition-18'>Definition</h3>
+</span></code></pre></div><h3 id='definition-18'>Definition</h3>
 <p><code>GET /api/me</code></p>
 <h3 id='arguments-13'>Arguments</h3>
 <p>None.</p>
@@ -1482,11 +1570,11 @@ This is important for keeping accounts secure, so that users keep access to thei
 <p>An authenticated user&#39;s basic data.</p>
 <h3 id='errors-5'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid access token."</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid access token."</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Error Code</th>
@@ -1498,57 +1586,57 @@ This is important for keeping accounts secure, so that users keep access to thei
 <td>Access token is invalid or expired.</td>
 </tr>
 </tbody></table>
-<h2 id='retrieve-user-39-s-posts'>Retrieve User&#39;s Posts</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/me/posts"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X GET
-</code></pre>
+<h2 id='retrieve-user-39-s-posts'>Retrieve User&#39;s Posts</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span>
+<span class="n">p</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">GetUserPosts</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/me/posts"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">  
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7xe2dbojynjs1dkk"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cool-post"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-12T03:49:36Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-12T03:49:36Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cool post!"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My great blog!"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7xe2dbojynjs1dkk"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cool-post"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-12T03:49:36Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-12T03:49:36Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cool post!"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My great blog!"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:46Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:46Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a post."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf3t35fkax0aw"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appearance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"norm"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rtl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:46Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-09T01:43:46Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Post"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a post."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='definition-19'>Definition</h3>
+</span></code></pre></div><h3 id='definition-19'>Definition</h3>
 <p><code>GET /api/me/posts</code></p>
 <h3 id='arguments-14'>Arguments</h3>
 <p>None.</p>
@@ -1556,11 +1644,11 @@ This is important for keeping accounts secure, so that users keep access to thei
 <p>An array of the authenticated user&#39;s posts, including anonymous and collection posts.</p>
 <h3 id='errors-6'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid access token."</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid access token."</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Error Code</th>
@@ -1572,33 +1660,33 @@ This is important for keeping accounts secure, so that users keep access to thei
 <td>Access token is invalid or expired.</td>
 </tr>
 </tbody></table>
-<h2 id='retrieve-user-39-s-collections'>Retrieve User&#39;s Collections</h2><pre class="highlight go tab-go"><code><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span><span class="x">
-</span><span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span><span class="x">
-</span><span class="n">colls</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">GetUserCollections</span><span class="p">()</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/me/collections"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X GET
-</code></pre>
+<h2 id='retrieve-user-39-s-collections'>Retrieve User&#39;s Collections</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span>
+<span class="n">colls</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">GetUserCollections</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/me/collections"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My great blog!"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt-7e7euebput9t5jr3v4csgferutf@writeas.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://write.as/matt/"</span><span class="w">
+      </span><span class="nl">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My great blog!"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt-7e7euebput9t5jr3v4csgferutf@writeas.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://write.as/matt/"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='definition-20'>Definition</h3>
+</span></code></pre></div><h3 id='definition-20'>Definition</h3>
 <p><code>GET /api/me/collections</code></p>
 <h3 id='arguments-15'>Arguments</h3>
 <p>None.</p>
@@ -1606,11 +1694,11 @@ This is important for keeping accounts secure, so that users keep access to thei
 <p>All of an authenticated user&#39;s owned collections.</p>
 <h3 id='errors-7'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid access token."</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid access token."</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Error Code</th>
@@ -1622,34 +1710,34 @@ This is important for keeping accounts secure, so that users keep access to thei
 <td>Access token is invalid or expired.</td>
 </tr>
 </tbody></table>
-<h2 id='retrieve-user-39-s-channels'>Retrieve User&#39;s Channels</h2><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span><span class="x">
-</span><span class="c">// Use curl command or contribute at:</span><span class="x">
-</span><span class="c">//   https://github.com/writeas/writeas-go</span><span class="x">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/me/channels"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -X GET
-</code></pre>
+<h2 id='retrieve-user-39-s-channels'>Retrieve User&#39;s Channels</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span>
+<span class="c">// Use curl command or contribute at:</span>
+<span class="c">//   https://github.com/writeas/writeas-go</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/me/channels"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"twitter"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Twitter"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"username"</span><span class="p">:</span><span class="s2">"ilikebeans"</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"twitter"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Twitter"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="s2">"ilikebeans"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"mastodon"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"writing.exchange"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"writing.exchange"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"username"</span><span class="p">:</span><span class="s2">"matt"</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"mastodon"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"writing.exchange"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"writing.exchange"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="s2">"matt"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='definition-21'>Definition</h3>
+</span></code></pre></div><h3 id='definition-21'>Definition</h3>
 <p><code>GET /api/me/channels</code></p>
 <h3 id='arguments-16'>Arguments</h3>
 <p>None.</p>
@@ -1659,11 +1747,11 @@ This is important for keeping accounts secure, so that users keep access to thei
 <p>For channels that aren&#39;t a centralized service, like Mastodon, you&#39;ll also see a <code>url</code> property of the specific instance or host that the user has connected to.</p>
 <h3 id='errors-8'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid access token."</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid access token."</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Error Code</th>
@@ -1683,13 +1771,13 @@ This is important for keeping accounts secure, so that users keep access to thei
 <blockquote>
 <p>Example <code>crosspost</code> Parameter</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="s2">"crosspost"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w"> </span><span class="s2">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"writeas__"</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w"> </span><span class="s2">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ilikebeans"</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w"> </span><span class="s2">"medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"someone"</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w"> </span><span class="s2">"tumblr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example"</span><span class="w"> </span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="nl">"crosspost"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"writeas__"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ilikebeans"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"someone"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"tumblr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example"</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>Crossposting is easy to do when publishing a new post. It requires authentication and at least one connected integration / channel on the web.</p>
 
 <aside class="notice">
