@@ -548,6 +548,83 @@ Collections can be retrieved without authentication. However, [authentication](#
 The requested collection.
 
 
+## Update a Collection
+
+```go
+// Currently unsupported in the Go client.
+// Use curl command or contribute at:
+//   https://github.com/writeas/writeas-go
+```
+
+```shell
+curl "https://write.as/api/collections/new-blog" \
+  -H "Authorization: Token 00000000-0000-0000-0000-000000000000" \
+  -H "Content-Type: application/json" \
+  -X POST \
+  -d '{"description": "A great blog.", "style_sheet": "body { color: blue; }"}'
+```
+
+> Example Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "alias": "new-blog",
+    "title": "The Best Blog Ever",
+    "description": "A great blog.",
+	"style_sheet": "body { color: blue; }",
+	"script": "",
+    "email": "new-blog-wjn6epspzjqankz41mlfvz@writeas.com",
+    "views": 0
+  }
+}
+```
+
+This updates attributes of an existing collection.
+
+### Definition
+
+`POST /api/collections/{COLLECTION_ALIAS}`
+
+### Arguments
+
+Supply only the fields you would like to update. Any fields left out will remain unchanged.
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+**title** | string | no | The title of the collection.
+**description** | string | no | The collection description.
+**style_sheet** | string | no | The full custom CSS to apply to the collection. **Requires Write.as Pro**
+**script** | string | no | The full custom Javascript to apply to the collection. **Supported only on Write.as**
+**visibility** | integer | no | The collection Publicity setting. Must be one of the valid options listed below. **Requires Write.as Pro**
+**pass** | string | no | The password required to view a password-protected blog (`visibility = 4`).
+**mathjax** | boolean | no | Whether or not to enable MathJax rendering on the collection.
+
+### Valid `visibility` values
+
+Valid options for the `visibility` field:
+
+* `0` = Unlisted
+* `1` = Public
+* `2` = Private
+* `4` = Password-protected; requires `pass` value
+
+### Returns
+
+The newly created collection.
+
+### Errors
+
+This endpoint will attempt to update all possible fields. It will silently skip values it cannot update, such as premium attributes on Write.as, or the Public visibility option when a WriteFreely instance isn't configured for this.
+
+Error Code | Meaning
+---------- | -------
+400 | Request is missing required information, or has bad form data / JSON.
+401 | Incorrect information given.
+403 | You're not a Pro user.
+
+
 ## Delete a Collection
 
 ```go
