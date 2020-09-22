@@ -474,16 +474,20 @@ This creates a new collection. **Casual or Pro user required**.
 
 ### Arguments
 
-If only a `title` is given, the `alias` will be generated on the server from it. Clients should store the returned `alias` for future operations.
+Clients must supply either a `title` or `alias` (or both). If only a `title` is given, the `alias` will be generated from it.
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
-**title** | string | yes | An optional title for the post. If none is given, Write.as will try to extract one for the browser's title bar, but not change any appearance in the post itself.
-**alias** | string | no | One of any post appearance types [listed above](#posts). If invalid, defaults to `serif`.
+**alias** | string | no | A valid collection slug / alias, containing only alphanumerics and hyphens. If none given, Write.as will generate a valid alias from the `title` value.
+**title** | string | no | An optional title for the collection. If none given, Write.as will use the `alias` value.
 
 ### Returns
 
 The newly created collection.
+
+<aside class="success">
+Clients should store the returned <code>alias</code> for future operations.
+</aside>
 
 ### Errors
 
