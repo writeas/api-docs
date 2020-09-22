@@ -279,7 +279,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-e359fcb7.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-f2554154.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-2224a352.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-e9bde216.js"></script>
 
@@ -354,6 +354,9 @@
                   </li>
                   <li>
                     <a href="#retrieve-a-collection" class="toc-h2 toc-link" data-title="Retrieve a Collection">Retrieve a Collection</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-collection" class="toc-h2 toc-link" data-title="Update a Collection">Update a Collection</a>
                   </li>
                   <li>
                     <a href="#delete-a-collection" class="toc-h2 toc-link" data-title="Delete a Collection">Delete a Collection</a>
@@ -959,7 +962,7 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <h3 id='definition-7'>Definition</h3>
 <p><code>POST /api/collections</code></p>
 <h3 id='arguments-6'>Arguments</h3>
-<p>If only a <code>title</code> is given, the <code>alias</code> will be generated on the server from it. Clients should store the returned <code>alias</code> for future operations.</p>
+<p>Clients must supply either a <code>title</code> or <code>alias</code> (or both). If only a <code>title</code> is given, the <code>alias</code> will be generated from it.</p>
 
 <table><thead>
 <tr>
@@ -970,20 +973,24 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>title</strong></td>
-<td>string</td>
-<td>yes</td>
-<td>An optional title for the post. If none is given, Write.as will try to extract one for the browser&#39;s title bar, but not change any appearance in the post itself.</td>
-</tr>
-<tr>
 <td><strong>alias</strong></td>
 <td>string</td>
 <td>no</td>
-<td>One of any post appearance types <a href="#posts">listed above</a>. If invalid, defaults to <code>serif</code>.</td>
+<td>A valid collection slug / alias, containing only alphanumerics and hyphens. If none given, Write.as will generate a valid alias from the <code>title</code> value.</td>
+</tr>
+<tr>
+<td><strong>title</strong></td>
+<td>string</td>
+<td>no</td>
+<td>An optional title for the collection. If none given, Write.as will use the <code>alias</code> value.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-6'>Returns</h3>
 <p>The newly created collection.</p>
+
+<aside class="success">
+Clients should store the returned <code>alias</code> for future operations.
+</aside>
 <h3 id='errors-2'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1045,6 +1052,121 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <p><code>GET /api/collections/{COLLECTION_ALIAS}</code></p>
 <h3 id='returns-7'>Returns</h3>
 <p>The requested collection.</p>
+<h2 id='update-a-collection'>Update a Collection</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span>
+<span class="c">// Use curl command or contribute at:</span>
+<span class="c">//   https://github.com/writeas/writeas-go</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/collections/new-blog"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"description": "A great blog.", "style_sheet": "body { color: blue; }"}'</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-blog"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Blog Ever"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A great blog."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"style_sheet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"body { color: blue; }"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"script"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-blog-wjn6epspzjqankz41mlfvz@writeas.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This updates attributes of an existing collection.</p>
+<h3 id='definition-9'>Definition</h3>
+<p><code>POST /api/collections/{COLLECTION_ALIAS}</code></p>
+<h3 id='arguments-7'>Arguments</h3>
+<p>Supply only the fields you would like to update. Any fields left out will remain unchanged.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>title</strong></td>
+<td>string</td>
+<td>no</td>
+<td>The title of the collection.</td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td>string</td>
+<td>no</td>
+<td>The collection description.</td>
+</tr>
+<tr>
+<td><strong>style_sheet</strong></td>
+<td>string</td>
+<td>no</td>
+<td>The full custom CSS to apply to the collection. <strong>Requires Write.as Pro</strong></td>
+</tr>
+<tr>
+<td><strong>script</strong></td>
+<td>string</td>
+<td>no</td>
+<td>The full custom Javascript to apply to the collection. <strong>Supported only on Write.as</strong></td>
+</tr>
+<tr>
+<td><strong>visibility</strong></td>
+<td>integer</td>
+<td>no</td>
+<td>The collection Publicity setting. Must be one of the valid options listed below. <strong>Requires Write.as Pro</strong></td>
+</tr>
+<tr>
+<td><strong>pass</strong></td>
+<td>string</td>
+<td>no</td>
+<td>The password required to view a password-protected blog (<code>visibility = 4</code>).</td>
+</tr>
+<tr>
+<td><strong>mathjax</strong></td>
+<td>boolean</td>
+<td>no</td>
+<td>Whether or not to enable MathJax rendering on the collection.</td>
+</tr>
+</tbody></table>
+<h3 id='valid-visibility-values'>Valid <code>visibility</code> values</h3>
+<p>Valid options for the <code>visibility</code> field:</p>
+
+<ul>
+<li><code>0</code> = Unlisted</li>
+<li><code>1</code> = Public</li>
+<li><code>2</code> = Private</li>
+<li><code>4</code> = Password-protected; requires <code>pass</code> value</li>
+</ul>
+<h3 id='returns-8'>Returns</h3>
+<p>The newly created collection.</p>
+<h3 id='errors-3'>Errors</h3>
+<p>This endpoint will attempt to update all possible fields. It will silently skip values it cannot update, such as premium attributes on Write.as, or the Public visibility option when a WriteFreely instance isn&#39;t configured for this.</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Request is missing required information, or has bad form data / JSON.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Incorrect information given.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>You&#39;re not a Pro user.</td>
+</tr>
+</tbody></table>
 <h2 id='delete-a-collection'>Delete a Collection</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span>
 <span class="c">// Use curl command or contribute at:</span>
 <span class="c">//   https://github.com/writeas/writeas-go</span>
@@ -1058,9 +1180,9 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 </blockquote>
 
 <p>This permanently deletes a collection and makes any posts on it anonymous.</p>
-<h3 id='definition-9'>Definition</h3>
+<h3 id='definition-10'>Definition</h3>
 <p><code>DELETE /api/collections/{COLLECTION_ALIAS}</code></p>
-<h3 id='returns-8'>Returns</h3>
+<h3 id='returns-9'>Returns</h3>
 <p>A <code>204</code> status code and no content in the body.</p>
 <h2 id='retrieve-a-collection-post'>Retrieve a Collection Post</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span>
 <span class="c">// Use curl command or contribute at:</span>
@@ -1090,9 +1212,9 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <p>This retrieves a single post from a collection by the post&#39;s slug.</p>
 <h3 id='authentication-5'>Authentication</h3>
 <p>Collection posts can be retrieved without authentication. However, <a href="#authentication">authentication</a> is required for retrieving a post from a private collection.</p>
-<h3 id='definition-10'>Definition</h3>
+<h3 id='definition-11'>Definition</h3>
 <p><code>GET /api/collections/{COLLECTION_ALIAS}/posts/{SLUG}</code></p>
-<h3 id='returns-9'>Returns</h3>
+<h3 id='returns-10'>Returns</h3>
 <p>The requested collection post.</p>
 <h2 id='publish-a-collection-post'>Publish a Collection Post</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
 <span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span>
@@ -1136,9 +1258,9 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This creates a new post and adds it to the given collection. User must be authenticated.</p>
-<h3 id='definition-11'>Definition</h3>
+<h3 id='definition-12'>Definition</h3>
 <p><code>POST /api/collections/{COLLECTION_ALIAS}/posts</code></p>
-<h3 id='arguments-7'>Arguments</h3>
+<h3 id='arguments-8'>Arguments</h3>
 <p>This accepts the same arguments as <a href="#publish-a-post">anonymous posts</a>, plus an optional <code>crosspost</code> parameter.</p>
 
 <table><thead>
@@ -1192,7 +1314,7 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td>An array of integrations and associated usernames to post to. See <a href="#crossposting">Crossposting</a>.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-10'>Returns</h3>
+<h3 id='returns-11'>Returns</h3>
 <p>The newly created post.</p>
 <h2 id='retrieve-collection-posts'>Retrieve Collection Posts</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span>
 <span class="c">// Use curl command or contribute at:</span>
@@ -1232,9 +1354,9 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <p>This retrieves a collection&#39;s posts along with the collection&#39;s data.</p>
 <h3 id='authentication-6'>Authentication</h3>
 <p>Collection posts can be retrieved without authentication. However, <a href="#authentication">authentication</a> is required for retrieving a private collection or one with scheduled posts.</p>
-<h3 id='definition-12'>Definition</h3>
+<h3 id='definition-13'>Definition</h3>
 <p><code>GET /api/collections/{COLLECTION_ALIAS}/posts</code></p>
-<h3 id='arguments-8'>Arguments</h3>
+<h3 id='arguments-9'>Arguments</h3>
 <p>Query string parameters can be passed to affect post presentation.</p>
 
 <table><thead>
@@ -1252,7 +1374,7 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td>Desired post body format. Can be left blank for raw text, or <code>html</code> to get back HTML generated from Markdown.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-11'>Returns</h3>
+<h3 id='returns-12'>Returns</h3>
 <p>The requested collection and its posts in a <code>posts</code> array.</p>
 <h2 id='move-a-post-to-a-collection'>Move a Post to a Collection</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// Currently unsupported in the Go client.</span>
 <span class="c">// Use curl command or contribute at:</span>
@@ -1287,9 +1409,9 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This adds a group of posts to a collection. This works for either posts that were created anonymously (i.e. don&#39;t belong to the user account) or posts already owned by the user account.</p>
-<h3 id='definition-13'>Definition</h3>
+<h3 id='definition-14'>Definition</h3>
 <p><code>POST /api/collections/{COLLECTION_ALIAS}/collect</code></p>
-<h3 id='arguments-9'>Arguments</h3>
+<h3 id='arguments-10'>Arguments</h3>
 <p>Pass an array of objects, each containing the following parameters:</p>
 
 <table><thead>
@@ -1313,7 +1435,7 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td>The post&#39;s modify token. *Required if the post doesn&#39;t belong to the requesting user.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-12'>Returns</h3>
+<h3 id='returns-13'>Returns</h3>
 <p>A <code>200</code> at the top level for all valid, authenticated requests. <code>data</code> contains an array of response envelopes: each with <code>code</code> and <code>post</code> (with full post data) on success, or <code>code</code> and <code>error_msg</code> on failure for any given post.</p>
 <h2 id='pin-a-post-to-a-collection'>Pin a Post to a Collection</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
 <span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span>
@@ -1341,9 +1463,9 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This pins a blog post to a collection. It&#39;ll show up as a navigation item in the collection/blog home page header, instead of on the blog itself.</p>
-<h3 id='definition-14'>Definition</h3>
+<h3 id='definition-15'>Definition</h3>
 <p><code>POST /api/collections/{COLLECTION_ALIAS}/pin</code></p>
-<h3 id='arguments-10'>Arguments</h3>
+<h3 id='arguments-11'>Arguments</h3>
 <p>Pass an array of objects, each containing the following parameters:</p>
 
 <table><thead>
@@ -1367,7 +1489,7 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td>The numeric position in which to pin the post. Will pin at end of list if no parameter is given.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-13'>Returns</h3>
+<h3 id='returns-14'>Returns</h3>
 <p>A <code>200</code> at the top level for all valid, authenticated requests. <code>data</code> contains an array of response envelopes: each with <code>code</code> and <code>id</code>, plus <code>error_msg</code> on failure for any given post.</p>
 <h2 id='unpin-a-post-from-a-collection'>Unpin a Post from a Collection</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
 <span class="n">c</span><span class="o">.</span><span class="n">SetToken</span><span class="p">(</span><span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span>
@@ -1394,9 +1516,9 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This unpins a blog post from a collection. It&#39;ll remove the navigation item from the collection/blog home page header and put the post back on the blog itself.</p>
-<h3 id='definition-15'>Definition</h3>
+<h3 id='definition-16'>Definition</h3>
 <p><code>POST /api/collections/{COLLECTION_ALIAS}/unpin</code></p>
-<h3 id='arguments-11'>Arguments</h3>
+<h3 id='arguments-12'>Arguments</h3>
 <p>Pass an array of objects, each containing the following parameters:</p>
 
 <table><thead>
@@ -1414,7 +1536,7 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td>The ID of the post to unpin from the collection</td>
 </tr>
 </tbody></table>
-<h3 id='returns-14'>Returns</h3>
+<h3 id='returns-15'>Returns</h3>
 <p>A <code>200</code> at the top level for all valid, authenticated requests. <code>data</code> contains an array of response envelopes: each with <code>code</code> and <code>id</code>, plus <code>error_msg</code> on failure for any given post.</p>
 <h1 id='users'>Users</h1>
 <p>Users have posts and collections associated with them that can be accessed across devices and browsers.</p>
@@ -1447,9 +1569,9 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <p>Authenticates a user with Write.as, creating an access token for future authenticated requests.</p>
 
 <p>Users can only authenticate with their primary account, i.e. the first collection/blog they created, which may or may not have multiple collections associated with it.</p>
-<h3 id='definition-16'>Definition</h3>
+<h3 id='definition-17'>Definition</h3>
 <p><code>POST /api/auth/login</code></p>
-<h3 id='arguments-12'>Arguments</h3>
+<h3 id='arguments-13'>Arguments</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1471,9 +1593,9 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <td>The user&#39;s password.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-15'>Returns</h3>
+<h3 id='returns-16'>Returns</h3>
 <p>A user access token and the authenticated user&#39;s full data.</p>
-<h3 id='errors-3'>Errors</h3>
+<h3 id='errors-4'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
@@ -1519,11 +1641,11 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <aside class="warning">
 This is important for keeping accounts secure, so that users keep access to their account limited to as few devices as possible. <em>Always</em> consider building this functionality into your Write.as clients.
 </aside>
-<h3 id='definition-17'>Definition</h3>
+<h3 id='definition-18'>Definition</h3>
 <p><code>DELETE /api/auth/me</code></p>
-<h3 id='returns-16'>Returns</h3>
+<h3 id='returns-17'>Returns</h3>
 <p>A <code>204</code> status code and no content in the body.</p>
-<h3 id='errors-4'>Errors</h3>
+<h3 id='errors-5'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
@@ -1562,13 +1684,13 @@ This is important for keeping accounts secure, so that users keep access to thei
     </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matt"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='definition-18'>Definition</h3>
+</span></code></pre></div><h3 id='definition-19'>Definition</h3>
 <p><code>GET /api/me</code></p>
-<h3 id='arguments-13'>Arguments</h3>
+<h3 id='arguments-14'>Arguments</h3>
 <p>None.</p>
-<h3 id='returns-17'>Returns</h3>
+<h3 id='returns-18'>Returns</h3>
 <p>An authenticated user&#39;s basic data.</p>
-<h3 id='errors-5'>Errors</h3>
+<h3 id='errors-6'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
@@ -1636,13 +1758,13 @@ This is important for keeping accounts secure, so that users keep access to thei
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='definition-19'>Definition</h3>
+</span></code></pre></div><h3 id='definition-20'>Definition</h3>
 <p><code>GET /api/me/posts</code></p>
-<h3 id='arguments-14'>Arguments</h3>
+<h3 id='arguments-15'>Arguments</h3>
 <p>None.</p>
-<h3 id='returns-18'>Returns</h3>
+<h3 id='returns-19'>Returns</h3>
 <p>An array of the authenticated user&#39;s posts, including anonymous and collection posts.</p>
-<h3 id='errors-6'>Errors</h3>
+<h3 id='errors-7'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
@@ -1686,13 +1808,13 @@ This is important for keeping accounts secure, so that users keep access to thei
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='definition-20'>Definition</h3>
+</span></code></pre></div><h3 id='definition-21'>Definition</h3>
 <p><code>GET /api/me/collections</code></p>
-<h3 id='arguments-15'>Arguments</h3>
+<h3 id='arguments-16'>Arguments</h3>
 <p>None.</p>
-<h3 id='returns-19'>Returns</h3>
+<h3 id='returns-20'>Returns</h3>
 <p>All of an authenticated user&#39;s owned collections.</p>
-<h3 id='errors-7'>Errors</h3>
+<h3 id='errors-8'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
@@ -1737,15 +1859,15 @@ This is important for keeping accounts secure, so that users keep access to thei
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='definition-21'>Definition</h3>
+</span></code></pre></div><h3 id='definition-22'>Definition</h3>
 <p><code>GET /api/me/channels</code></p>
-<h3 id='arguments-16'>Arguments</h3>
+<h3 id='arguments-17'>Arguments</h3>
 <p>None.</p>
-<h3 id='returns-20'>Returns</h3>
+<h3 id='returns-21'>Returns</h3>
 <p>An array of the authenticated user&#39;s connected channels, or <em>integrations</em>.</p>
 
 <p>For channels that aren&#39;t a centralized service, like Mastodon, you&#39;ll also see a <code>url</code> property of the specific instance or host that the user has connected to.</p>
-<h3 id='errors-8'>Errors</h3>
+<h3 id='errors-9'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
