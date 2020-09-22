@@ -962,7 +962,7 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 <h3 id='definition-7'>Definition</h3>
 <p><code>POST /api/collections</code></p>
 <h3 id='arguments-6'>Arguments</h3>
-<p>Clients must supply either a <code>title</code> or <code>alias</code> (or both). If only a <code>title</code> is given, the <code>alias</code> will be generated from it.</p>
+<p>If only a <code>title</code> is given, the <code>alias</code> will be generated on the server from it. Clients should store the returned <code>alias</code> for future operations.</p>
 
 <table><thead>
 <tr>
@@ -973,24 +973,20 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
 </tr>
 </thead><tbody>
 <tr>
+<td><strong>title</strong></td>
+<td>string</td>
+<td>yes</td>
+<td>An optional title for the post. If none is given, Write.as will try to extract one for the browser&#39;s title bar, but not change any appearance in the post itself.</td>
+</tr>
+<tr>
 <td><strong>alias</strong></td>
 <td>string</td>
 <td>no</td>
-<td>A valid collection slug / alias, containing only alphanumerics and hyphens. If none given, Write.as will generate a valid alias from the <code>title</code> value.</td>
-</tr>
-<tr>
-<td><strong>title</strong></td>
-<td>string</td>
-<td>no</td>
-<td>An optional title for the collection. If none given, Write.as will use the <code>alias</code> value.</td>
+<td>One of any post appearance types <a href="#posts">listed above</a>. If invalid, defaults to <code>serif</code>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-6'>Returns</h3>
 <p>The newly created collection.</p>
-
-<aside class="success">
-Clients should store the returned <code>alias</code> for future operations.
-</aside>
 <h3 id='errors-2'>Errors</h3>
 <p>Errors are returned with a user-friendly error message.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
