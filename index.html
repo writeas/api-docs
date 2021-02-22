@@ -1351,7 +1351,13 @@ Clients should store the returned <code>alias</code> for future operations.
 <td><strong>title</strong></td>
 <td>string</td>
 <td>no</td>
-<td>An optional title for the post. If none is given, Write.as will try to extract one for the browser&#39;s title bar, but not change any appearance in the post itself.</td>
+<td>An optional title for the post. If none given, Write.as will try to extract one for the browser&#39;s title bar, but not change any appearance in the post itself.</td>
+</tr>
+<tr>
+<td><strong>slug</strong></td>
+<td>string</td>
+<td>no</td>
+<td>An optional slug for the post. If none given, Write.as will automatically generate one from the given title, or from the post body if no title given.</td>
 </tr>
 <tr>
 <td><strong>font</strong></td>
