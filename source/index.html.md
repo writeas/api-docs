@@ -824,7 +824,8 @@ This accepts the same arguments as [anonymous posts](#publish-a-post), plus an o
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
 **body** | string | yes | The content of the post.
-**title** | string | no | An optional title for the post. If none is given, Write.as will try to extract one for the browser's title bar, but not change any appearance in the post itself.
+**title** | string | no | An optional title for the post. If none given, Write.as will try to extract one for the browser's title bar, but not change any appearance in the post itself.
+**slug** | string | no | An optional slug for the post. If none given, Write.as will automatically generate one from the given title, or from the post body if no title given.
 **font** | string | no | One of any post appearance types [listed above](#posts). If invalid, defaults to `serif`.
 **lang** | string | no | ISO 639-1 language code, e.g. _en_ or _de_.
 **rtl** | boolean | no | Whether or not the content should be display right-to-left, for example if written in Arabic or Hebrew.
