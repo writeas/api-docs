@@ -31,18 +31,23 @@ This documentation represents the officially-supported, latest API. Any properti
 
 ## Libraries
 
-These are our official libraries in different programming languages.
+These are our official API libraries:
 
-Language | Fetch | Docs | Repository
--------- | ----- | ---- | ----
-**Go** | `go get github.com/writeas/go-writeas` | [GoDoc](https://pkg.go.dev/github.com/writeas/go-writeas/v2) | [GitHub](https://github.com/writeas/go-writeas)
-**Java** | | | [GitHub](https://github.com/writeas/java-writeas)
+Language | Docs | Repository | WriteFreely Support?
+-------- | ---- | ---------- | ------------
+**Go** | [GoDoc](https://pkg.go.dev/github.com/writeas/go-writeas/v2) | [GitHub](https://github.com/writeas/go-writeas) | Yes
+**Swift** | | [GitHub](https://github.com/writefreely/writefreely-swift) | Yes
+**Java** | | [GitHub](https://github.com/writeas/java-writeas) | No
 
 These libraries were created by the community &mdash; [let us know](https://write.as/contact) if you create one, too!
 
-Language | Fetch | Docs | Repository
--------- | ----- | ---- | ----
-**Javascript** | `npm install writeas` | [npm](https://www.npmjs.com/package/writeas) | [GitHub](https://github.com/devsnek/writeas.js)
+Language | Docs | Repository | WriteFreely Support?
+-------- | ---- | ---------- | ------------
+**Vala** | [README](https://github.com/ThiefMD/writeas-vala#quick-start) | [GitHub](https://github.com/ThiefMD/writeas-vala) | Yes
+**PHP** | [README](https://github.com/theimpossibleastronaut/writeas.php#writeasphp) | [GitHub](https://github.com/theimpossibleastronaut/writeas.php) | Yes
+**.NET Core** | [README](https://github.com/DinoBansigan/WriteAs.NET#writeasnet) | [GitHub](https://github.com/DinoBansigan/WriteAs.NET) | Yes
+**Python** | [README](https://github.com/cjeller1592/WriteasAPI#getting-started) | [GitHub](https://github.com/cjeller1592/WriteasAPI) | No
+**Javascript** | [npm](https://www.npmjs.com/package/writeas) | [GitHub](https://github.com/devsnek/writeas.js) | No
 
 ## Errors
 
