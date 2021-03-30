@@ -4,6 +4,7 @@ title: Write.as API Documentation
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - go
+  - swift
 
 toc_footers:
   - <a href='https://developers.write.as'>Developers Write.as</a>
@@ -203,6 +204,21 @@ curl "https://write.as/api/posts" \
   -d '{"body": "This is a post.", "title": "My First Post"}'
 ```
 
+```swift
+let client = WFClient(for: "https://write.as")
+let post = WFPost(body: "This is a post.", title: "My First Post")
+client.createPost(post: post) { result in
+  switch result {
+  case .success(let post):
+    print("Post created successfully!")
+    // Do something with the returned WFPost
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
+```
+
 > Example Response
 
 ```json
@@ -270,6 +286,20 @@ p, err := c.GetPost("rf3t35fkax0aw")
 curl https://write.as/api/posts/rf3t35fkax0aw
 ```
 
+```swift
+let client = WFClient(for: "https://write.as")
+client.getPost(byID: "rf3t35fkax0aw") { result in
+  switch result {
+  case .success(let post):
+    print("Post retrieved successfully!")
+    // Do something with the returned WFPost
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
+```
+
 > Example Response
 
 ```json
@@ -312,6 +342,21 @@ curl "https://write.as/api/posts/rf3t35fkax0aw" \
   -H "Content-Type: application/json" \
   -X POST \
   -d '{"token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M", "body": "My post is updated."}'
+```
+
+```
+let client = WFClient(for "https://write.as")
+let updatedPost = WFPost(body: "My post is updated.")
+client.updatePost(postId: "", updatedPost: updatedPost) { result in
+  switch result {
+  case .success(let post):
+    print("Post updated successfully!")
+    // Do something with the returned WFPost
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
 ```
 
 > Example Response
@@ -380,6 +425,11 @@ curl "https://write.as/api/posts/rf3t35fkax0aw" \
   -d '{"token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M", "body": ""}'
 ```
 
+```swift
+// Not yet implemented in the Swift package. Contribute at:
+//   https://github.com/writefreely/writefreely-swift
+```
+
 > Response
 
 ```json
@@ -424,6 +474,20 @@ curl "https://write.as/api/posts/rf3t35fkax0aw?token=ozPEuJWYK8L1QsysBUcTUKy9za7
   -X DELETE
 ```
 
+```swift
+let client = WFClient(for: "https://write.as")
+// Deleting a post that doesn't belong to the requesting user is currently unsupported.
+client.deletePost(postId: "rf3t35fkax0aw") { result in
+  switch result {
+  case .success():
+    print("Post sucessfully deleted!")
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
+```
+
 > A successful deletion returns a `204` with no content in the body.
 
 This deletes a post.
@@ -462,6 +526,11 @@ curl "https://write.as/api/posts/claim" \
   -H "Content-Type: application/json" \
   -X POST \
   -d '[{"id": "rf3t35fkax0aw", "token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"}]'
+```
+
+```swift
+// Not yet implemented in the Swift package. Contribute at:
+//   https://github.com/writefreely/writefreely-swift
 ```
 
 > Always returns a `200`
@@ -513,6 +582,20 @@ curl "https://write.as/api/collections" \
   -H "Content-Type: application/json" \
   -X POST \
   -d '{"alias": "new-blog", "title": "The Best Blog Ever"}'
+```
+
+```swift
+let client = WFClient(for: "https://write.as")
+client.createCollection(token: "00000000-0000-0000-0000-000000000000", withTitle: "The Best Blog Ever", alias: "new-blog") { result in
+  switch result {
+  case .success(let collection):
+    print("Collection created successfully!")
+    // Do something with the returned WFCollection
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
 ```
 
 > Example Response
@@ -586,6 +669,20 @@ coll, err := c.GetCollection("new-blog")
 curl https://write.as/api/collections/new-blog
 ```
 
+```swift
+let client = WFClient(for: "https://write.as")
+client.getCollection(withAlias: "new-blog") { result in
+  switch result {
+  case .success(let collection):
+    print("Collection retrieved successfully!")
+    // Do something with the returned WFCollection
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
+```
+
 > Example Response
 
 ```json
@@ -632,6 +729,11 @@ curl "https://write.as/api/collections/new-blog" \
   -H "Content-Type: application/json" \
   -X POST \
   -d '{"description": "A great blog.", "style_sheet": "body { color: blue; }"}'
+```
+
+```swift
+// Not yet implemented in the Swift package. Contribute at:
+//   https://github.com/writefreely/writefreely-swift
 ```
 
 > Example Response
@@ -710,6 +812,19 @@ curl https://write.as/api/collections/new-blog \
   -X DELETE
 ```
 
+```swift
+let client = WFClient(for: "https://write.as")
+client.deleteCollection(token: "00000000-0000-0000-0000-000000000000", withAlias: "new-blog") { result in
+  switch result {
+  case .success():
+    print("Collection deleted successfully!")
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
+```
+
 > A successful deletion returns a `204` with no content in the body.
 
 This permanently deletes a collection and makes any posts on it anonymous.
@@ -733,6 +848,20 @@ A `204` status code and no content in the body.
 
 ```shell
 curl https://write.as/api/collections/new-blog/posts/my-first-post
+```
+
+```swift
+let client = WFClient(for: "https://write.as")
+client.getPost(bySlug: "my-first-post", from: "new-blog") { result in
+  switch result {
+  case .success(let post):
+    print("Post retrieved successfully!")
+    // Do something with the returned WFPost
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
 ```
 
 > Example Response
@@ -789,6 +918,21 @@ curl "https://write.as/api/collections/new-blog/posts" \
   -H "Content-Type: application/json" \
   -X POST \
   -d '{"body": "This is a blog post.", "title": "My First Post"}'
+```
+
+```swift
+let client = WFClient(for: "https://write.as")
+let post = WFPost(token: "00000000-0000-0000-0000-000000000000", body: "This is a post.", title: "My First Post")
+client.createPost(post: post, in: "new-blog") { result in
+  switch result {
+  case .success(let post):
+    print("Post created successfully!")
+    // Do something with the returned WFPost
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
 ```
 
 > Example Response
@@ -856,6 +1000,20 @@ The newly created post.
 
 ```shell
 curl https://write.as/api/collections/new-blog/posts
+```
+
+```swift
+let client = WFClient(for: "https://write.as")
+client.getPosts(in: "new-blog") { result in
+  switch result {
+  case .success(let posts):
+    print("Collection posts retrieved successfully!")
+    // Do something with the returned WFPost array
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
 ```
 
 > Example Response
@@ -928,6 +1086,19 @@ curl "https://write.as/api/collections/new-blog/collect" \
   -d '[{"id": "rf3t35fkax0aw", "token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"}]'
 ```
 
+```swift
+let client = WFClient(for: "https://write.as")
+client.movePost(token: "00000000-0000-0000-0000-000000000000", postId: "rf3t35fkax0aw", to: "new-blog") { result in
+  switch result {
+  case .success():
+    print("Post moved successfully!")
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
+```
+
 > Example Response
 
 ```json
@@ -991,6 +1162,19 @@ curl "https://write.as/api/collections/new-blog/pin" \
   -d '[{"id": "rf3t35fkax0aw", "position": 1}]'
 ```
 
+```swift
+let client = WFClient(for: "https://write.as")
+client.pinPost(token: "00000000-0000-0000-0000-000000000000", postId: "rf3t35fkax0aw", at: 1, in: "new-blog") { result in
+  switch result {
+  case .success():
+    print("Post pinned successfully!")
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
+```
+
 > Example Response
 
 ```json
@@ -1041,6 +1225,19 @@ curl "https://write.as/api/collections/new-blog/unpin" \
   -H "Content-Type: application/json" \
   -X POST \
   -d '[{"id": "rf3t35fkax0aw"}]'
+```
+
+```swift
+let client = WFClient(for: "https://write.as")
+client.unpinPost(token: "00000000-0000-0000-0000-000000000000", postId: "rf3t35fkax0aw", from: "new-blog") { result in
+  switch result {
+  case .success():
+    print("Post pinned successfully!")
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
 ```
 
 > Example Response
@@ -1097,6 +1294,20 @@ curl "https://write.as/api/auth/login" \
   -H "Content-Type: application/json" \
   -X POST \
   -d '{"alias": "matt", "pass": "12345"}'
+```
+
+```swift
+let client = WFClient(for: "https://write.as")
+client.login(username: "matt", password: "12345") { result in
+  switch result {
+  case .success():
+    print("Logged in successfully!")
+    // Do something with the returned WFUser
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
 ```
 
 > Example Response
@@ -1166,6 +1377,20 @@ curl "https://write.as/api/auth/me" \
   -H "Authorization: Token 00000000-0000-0000-0000-000000000000" \
   -X DELETE
 ```
+
+```swift
+let client = WFClient(for: "https://write.as")
+client.logout(token: "00000000-0000-0000-0000-000000000000") { result in
+  switch result {
+  case .success():
+    print("Logged out successfully!")
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
+```
+
 > A successful deletion returns a `204` with no content in the body.
 
 Un-authenticates a user with Write.as, permanently invalidating the access token used with the request.
@@ -1212,6 +1437,20 @@ curl "https://write.as/api/me" \
   -H "Authorization: Token 00000000-0000-0000-0000-000000000000" \
   -H "Content-Type: application/json" \
   -X GET
+```
+
+```swift
+let client = WFClient(for: "https://write.as")
+client.getUserData(token: "00000000-0000-0000-0000-000000000000") { result in
+  switch result {
+  case .success():
+    print("User retrieved successfully!")
+    // Do something with the returned WFUser
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
 ```
 
 > Example Response
@@ -1267,6 +1506,22 @@ curl "https://write.as/api/me/posts" \
   -H "Content-Type: application/json" \
   -X GET
 ```
+
+```swift
+let client = WFClient(for: "https://write.as")
+client.getPosts(token: "00000000-0000-0000-0000-000000000000") { result in
+  switch result {
+  case .success(let posts):
+    print("User's posts retrieved successfully!")
+    // Do something with the returned WFPost array
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
+```
+
+
 
 > Example Response
 
@@ -1355,6 +1610,20 @@ curl "https://write.as/api/me/collections" \
   -X GET
 ```
 
+```swift
+let client = WFClient(for: "https://write.as")
+client.getUserCollections(token: "00000000-0000-0000-0000-000000000000") { result in
+  switch result {
+  case .success(let collections):
+    print("User's collections retrieved successfully!")
+    // Do something with the returned WFCollection array
+  case .failure(let error):
+    print("Something went wrong!")
+    // Do something with the returned WFError
+  }
+}
+```
+
 > Example Response
 
 ```json
@@ -1416,6 +1685,11 @@ curl "https://write.as/api/me/channels" \
   -H "Authorization: Token 00000000-0000-0000-0000-000000000000" \
   -H "Content-Type: application/json" \
   -X GET
+```
+
+```swift
+// Not yet implemented in the Swift package. Contribute at:
+//   https://github.com/writefreely/writefreely-swift
 ```
 
 > Example Response
