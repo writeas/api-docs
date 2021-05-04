@@ -288,7 +288,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;go&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;go&quot;,&quot;swift&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -300,6 +300,7 @@
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="go">go</a>
+              <a href="#" data-language-name="swift">swift</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -728,6 +729,16 @@ Replace <code>00000000-0000-0000-0000-000000000000</code> with a user's access t
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{"body": "This is a post.", "title": "My First Post"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">post</span> <span class="o">=</span> <span class="kt">WFPost</span><span class="p">(</span><span class="nv">body</span><span class="p">:</span> <span class="s">"This is a post."</span><span class="p">,</span> <span class="nv">title</span><span class="p">:</span> <span class="s">"My First Post"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">createPost</span><span class="p">(</span><span class="nv">post</span><span class="p">:</span> <span class="n">post</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">post</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFPost</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -821,6 +832,15 @@ When the request is unauthenticated, the client should store the <code>token</co
 <h2 id='retrieve-a-post'>Retrieve a Post</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
 <span class="n">p</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">GetPost</span><span class="p">(</span><span class="s">"rf3t35fkax0aw"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://write.as/api/posts/rf3t35fkax0aw
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">getPost</span><span class="p">(</span><span class="nv">byID</span><span class="p">:</span> <span class="s">"rf3t35fkax0aw"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">post</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFPost</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -853,6 +873,16 @@ When the request is unauthenticated, the client should store the <code>token</co
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{"token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M", "body": "My post is updated."}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="k">for</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">updatedPost</span> <span class="o">=</span> <span class="kt">WFPost</span><span class="p">(</span><span class="nv">body</span><span class="p">:</span> <span class="s">"My post is updated."</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">updatePost</span><span class="p">(</span><span class="nv">postId</span><span class="p">:</span> <span class="s">""</span><span class="p">,</span> <span class="nv">updatedPost</span><span class="p">:</span> <span class="n">updatedPost</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">post</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFPost</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -938,6 +968,8 @@ If done anonymously, it requires past knowledge of the existing post's <code>tok
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{"token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M", "body": ""}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="c1">// Not yet implemented in the Swift package. Contribute at:</span>
+<span class="c1">//   https://github.com/writefreely/writefreely-swift</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -978,6 +1010,16 @@ If done anonymously, it requires past knowledge of the existing post's <code>tok
 <span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">DeletePost</span><span class="p">(</span><span class="s">"rf3t35fkax0aw"</span><span class="p">,</span> <span class="s">"ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/posts/rf3t35fkax0aw?token=ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"</span> <span class="se">\</span>
   <span class="nt">-X</span> DELETE
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="c1">// Deleting a post that doesn't belong to the requesting user is currently unsupported.</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">deletePost</span><span class="p">(</span><span class="nv">postId</span><span class="p">:</span> <span class="s">"rf3t35fkax0aw"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">():</span>
+    <span class="c1">// Notify the user that the post was deleted successfully</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>A successful deletion returns a <code>204</code> with no content in the body.</p>
@@ -1017,6 +1059,8 @@ If done anonymously, it requires past knowledge of the existing post's <code>tok
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'[{"id": "rf3t35fkax0aw", "token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"}]'</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="c1">// Not yet implemented in the Swift package. Contribute at:</span>
+<span class="c1">//   https://github.com/writefreely/writefreely-swift</span>
 </code></pre></div>
 <blockquote>
 <p>Always returns a <code>200</code></p>
@@ -1070,6 +1114,15 @@ All collection requests must be <a href="#authentication">authenticated</a>, exc
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{"alias": "new-blog", "title": "The Best Blog Ever"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">createCollection</span><span class="p">(</span><span class="nv">token</span><span class="p">:</span> <span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span> <span class="nv">withTitle</span><span class="p">:</span> <span class="s">"The Best Blog Ever"</span><span class="p">,</span> <span class="nv">alias</span><span class="p">:</span> <span class="s">"new-blog"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">collection</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFCollection</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -1157,6 +1210,15 @@ Clients should store the returned <code>alias</code> for future operations.
 <h2 id='retrieve-a-collection'>Retrieve a Collection</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">c</span> <span class="o">:=</span> <span class="n">writeas</span><span class="o">.</span><span class="n">NewClient</span><span class="p">()</span>
 <span class="n">coll</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">GetCollection</span><span class="p">(</span><span class="s">"new-blog"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://write.as/api/collections/new-blog
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">getCollection</span><span class="p">(</span><span class="nv">withAlias</span><span class="p">:</span> <span class="s">"new-blog"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">collection</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFCollection</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -1189,6 +1251,8 @@ Clients should store the returned <code>alias</code> for future operations.
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{"description": "A great blog.", "style_sheet": "body { color: blue; }"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="c1">// Not yet implemented in the Swift package. Contribute at:</span>
+<span class="c1">//   https://github.com/writefreely/writefreely-swift</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -1303,6 +1367,15 @@ Clients should store the returned <code>alias</code> for future operations.
   <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> DELETE
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">deleteCollection</span><span class="p">(</span><span class="nv">token</span><span class="p">:</span> <span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span> <span class="nv">withAlias</span><span class="p">:</span> <span class="s">"new-blog"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">():</span>
+    <span class="c1">// Notify the user that the collection was deleted successfully</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>A successful deletion returns a <code>204</code> with no content in the body.</p>
@@ -1317,6 +1390,15 @@ Clients should store the returned <code>alias</code> for future operations.
 <span class="c">// Use curl command or contribute at:</span>
 <span class="c">//   https://github.com/writeas/writeas-go</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://write.as/api/collections/new-blog/posts/my-first-post
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">getPost</span><span class="p">(</span><span class="nv">bySlug</span><span class="p">:</span> <span class="s">"my-first-post"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"new-blog"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">post</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFPost</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -1357,6 +1439,16 @@ Clients should store the returned <code>alias</code> for future operations.
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{"body": "This is a blog post.", "title": "My First Post"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">post</span> <span class="o">=</span> <span class="kt">WFPost</span><span class="p">(</span><span class="nv">token</span><span class="p">:</span> <span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span> <span class="nv">body</span><span class="p">:</span> <span class="s">"This is a post."</span><span class="p">,</span> <span class="nv">title</span><span class="p">:</span> <span class="s">"My First Post"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">createPost</span><span class="p">(</span><span class="nv">post</span><span class="p">:</span> <span class="n">post</span><span class="p">,</span> <span class="nv">in</span><span class="p">:</span> <span class="s">"new-blog"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">post</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFPost</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -1455,6 +1547,15 @@ Clients should store the returned <code>alias</code> for future operations.
 <span class="c">// Use curl command or contribute at:</span>
 <span class="c">//   https://github.com/writeas/writeas-go</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://write.as/api/collections/new-blog/posts
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">getPosts</span><span class="p">(</span><span class="nv">in</span><span class="p">:</span> <span class="s">"new-blog"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">posts</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFPost array</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -1519,6 +1620,15 @@ Clients should store the returned <code>alias</code> for future operations.
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'[{"id": "rf3t35fkax0aw", "token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M"}]'</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">movePost</span><span class="p">(</span><span class="nv">token</span><span class="p">:</span> <span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span> <span class="nv">postId</span><span class="p">:</span> <span class="s">"rf3t35fkax0aw"</span><span class="p">,</span> <span class="nv">to</span><span class="p">:</span> <span class="s">"new-blog"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">():</span>
+    <span class="c1">// Notify the user that the post was moved successfully</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -1583,6 +1693,15 @@ Clients should store the returned <code>alias</code> for future operations.
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'[{"id": "rf3t35fkax0aw", "position": 1}]'</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">pinPost</span><span class="p">(</span><span class="nv">token</span><span class="p">:</span> <span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span> <span class="nv">postId</span><span class="p">:</span> <span class="s">"rf3t35fkax0aw"</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">in</span><span class="p">:</span> <span class="s">"new-blog"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">():</span>
+    <span class="c1">// Notify the user that the post was pinned successfully</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -1636,6 +1755,15 @@ Clients should store the returned <code>alias</code> for future operations.
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'[{"id": "rf3t35fkax0aw"}]'</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">unpinPost</span><span class="p">(</span><span class="nv">token</span><span class="p">:</span> <span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span> <span class="nv">postId</span><span class="p">:</span> <span class="s">"rf3t35fkax0aw"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"new-blog"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">():</span>
+    <span class="c1">// Notify the user that the post was unpinned successfully</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -1685,6 +1813,15 @@ Clients should store the returned <code>alias</code> for future operations.
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{"alias": "matt", "pass": "12345"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">login</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="s">"matt"</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="s">"12345"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">():</span>
+    <span class="c1">// Do something with the returned WFUser</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -1766,6 +1903,15 @@ Clients should store the returned <code>alias</code> for future operations.
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://write.as/api/auth/me"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
   <span class="nt">-X</span> DELETE
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">logout</span><span class="p">(</span><span class="nv">token</span><span class="p">:</span> <span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">():</span>
+    <span class="c1">// Notify the user that they were logged out successfully</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>A successful deletion returns a <code>204</code> with no content in the body.</p>
@@ -1809,6 +1955,15 @@ This is important for keeping accounts secure, so that users keep access to thei
   <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> GET
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">getUserData</span><span class="p">(</span><span class="nv">token</span><span class="p">:</span> <span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">():</span>
+    <span class="c1">// Do something with the returned WFUser</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -1850,6 +2005,15 @@ This is important for keeping accounts secure, so that users keep access to thei
   <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> GET
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">getPosts</span><span class="p">(</span><span class="nv">token</span><span class="p">:</span> <span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">posts</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFPost array</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -1924,6 +2088,15 @@ This is important for keeping accounts secure, so that users keep access to thei
   <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> GET
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">WFClient</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"https://write.as"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">getUserCollections</span><span class="p">(</span><span class="nv">token</span><span class="p">:</span> <span class="s">"00000000-0000-0000-0000-000000000000"</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">collections</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFCollection array</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="c1">// Do something with the returned WFError</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -1974,6 +2147,8 @@ This is important for keeping accounts secure, so that users keep access to thei
   <span class="nt">-H</span> <span class="s2">"Authorization: Token 00000000-0000-0000-0000-000000000000"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> GET
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="c1">// Not yet implemented in the Swift package. Contribute at:</span>
+<span class="c1">//   https://github.com/writefreely/writefreely-swift</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
@@ -2072,6 +2247,7 @@ Soon you'll be able to retrieve a user's connected accounts, so this may only be
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
                 <a href="#" data-language-name="go">go</a>
+                <a href="#" data-language-name="swift">swift</a>
           </div>
       </div>
     </div>
