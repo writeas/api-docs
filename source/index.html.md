@@ -344,7 +344,7 @@ curl "https://write.as/api/posts/rf3t35fkax0aw" \
   -d '{"token": "ozPEuJWYK8L1QsysBUcTUKy9za7yqQ4M", "body": "My post is updated."}'
 ```
 
-```
+```swift
 let client = WFClient(for "https://write.as")
 let updatedPost = WFPost(body: "My post is updated.")
 client.updatePost(postId: "", updatedPost: updatedPost) { result in
