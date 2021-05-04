@@ -210,10 +210,8 @@ let post = WFPost(body: "This is a post.", title: "My First Post")
 client.createPost(post: post) { result in
   switch result {
   case .success(let post):
-    print("Post created successfully!")
     // Do something with the returned WFPost
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -291,10 +289,8 @@ let client = WFClient(for: "https://write.as")
 client.getPost(byID: "rf3t35fkax0aw") { result in
   switch result {
   case .success(let post):
-    print("Post retrieved successfully!")
     // Do something with the returned WFPost
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -350,10 +346,8 @@ let updatedPost = WFPost(body: "My post is updated.")
 client.updatePost(postId: "", updatedPost: updatedPost) { result in
   switch result {
   case .success(let post):
-    print("Post updated successfully!")
     // Do something with the returned WFPost
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -480,9 +474,8 @@ let client = WFClient(for: "https://write.as")
 client.deletePost(postId: "rf3t35fkax0aw") { result in
   switch result {
   case .success():
-    print("Post sucessfully deleted!")
+    // Notify the user that the post was deleted successfully
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -589,10 +582,8 @@ let client = WFClient(for: "https://write.as")
 client.createCollection(token: "00000000-0000-0000-0000-000000000000", withTitle: "The Best Blog Ever", alias: "new-blog") { result in
   switch result {
   case .success(let collection):
-    print("Collection created successfully!")
     // Do something with the returned WFCollection
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -674,10 +665,8 @@ let client = WFClient(for: "https://write.as")
 client.getCollection(withAlias: "new-blog") { result in
   switch result {
   case .success(let collection):
-    print("Collection retrieved successfully!")
     // Do something with the returned WFCollection
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -817,9 +806,8 @@ let client = WFClient(for: "https://write.as")
 client.deleteCollection(token: "00000000-0000-0000-0000-000000000000", withAlias: "new-blog") { result in
   switch result {
   case .success():
-    print("Collection deleted successfully!")
+    // Notify the user that the collection was deleted successfully
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -855,10 +843,8 @@ let client = WFClient(for: "https://write.as")
 client.getPost(bySlug: "my-first-post", from: "new-blog") { result in
   switch result {
   case .success(let post):
-    print("Post retrieved successfully!")
     // Do something with the returned WFPost
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -926,10 +912,8 @@ let post = WFPost(token: "00000000-0000-0000-0000-000000000000", body: "This is 
 client.createPost(post: post, in: "new-blog") { result in
   switch result {
   case .success(let post):
-    print("Post created successfully!")
     // Do something with the returned WFPost
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -1007,10 +991,8 @@ let client = WFClient(for: "https://write.as")
 client.getPosts(in: "new-blog") { result in
   switch result {
   case .success(let posts):
-    print("Collection posts retrieved successfully!")
     // Do something with the returned WFPost array
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -1091,9 +1073,8 @@ let client = WFClient(for: "https://write.as")
 client.movePost(token: "00000000-0000-0000-0000-000000000000", postId: "rf3t35fkax0aw", to: "new-blog") { result in
   switch result {
   case .success():
-    print("Post moved successfully!")
+    // Notify the user that the post was moved successfully
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -1167,9 +1148,8 @@ let client = WFClient(for: "https://write.as")
 client.pinPost(token: "00000000-0000-0000-0000-000000000000", postId: "rf3t35fkax0aw", at: 1, in: "new-blog") { result in
   switch result {
   case .success():
-    print("Post pinned successfully!")
+    // Notify the user that the post was pinned successfully
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -1232,9 +1212,8 @@ let client = WFClient(for: "https://write.as")
 client.unpinPost(token: "00000000-0000-0000-0000-000000000000", postId: "rf3t35fkax0aw", from: "new-blog") { result in
   switch result {
   case .success():
-    print("Post pinned successfully!")
+    // Notify the user that the post was unpinned successfully
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -1301,10 +1280,8 @@ let client = WFClient(for: "https://write.as")
 client.login(username: "matt", password: "12345") { result in
   switch result {
   case .success():
-    print("Logged in successfully!")
     // Do something with the returned WFUser
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -1383,9 +1360,8 @@ let client = WFClient(for: "https://write.as")
 client.logout(token: "00000000-0000-0000-0000-000000000000") { result in
   switch result {
   case .success():
-    print("Logged out successfully!")
+    // Notify the user that they were logged out successfully
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -1444,10 +1420,8 @@ let client = WFClient(for: "https://write.as")
 client.getUserData(token: "00000000-0000-0000-0000-000000000000") { result in
   switch result {
   case .success():
-    print("User retrieved successfully!")
     // Do something with the returned WFUser
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -1512,10 +1486,8 @@ let client = WFClient(for: "https://write.as")
 client.getPosts(token: "00000000-0000-0000-0000-000000000000") { result in
   switch result {
   case .success(let posts):
-    print("User's posts retrieved successfully!")
     // Do something with the returned WFPost array
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
@@ -1615,10 +1587,8 @@ let client = WFClient(for: "https://write.as")
 client.getUserCollections(token: "00000000-0000-0000-0000-000000000000") { result in
   switch result {
   case .success(let collections):
-    print("User's collections retrieved successfully!")
     // Do something with the returned WFCollection array
   case .failure(let error):
-    print("Something went wrong!")
     // Do something with the returned WFError
   }
 }
