@@ -37,7 +37,7 @@ These are our official API libraries:
 Language | Docs | Repository | WriteFreely Support?
 -------- | ---- | ---------- | ------------
 **Go** | [GoDoc](https://pkg.go.dev/github.com/writeas/go-writeas/v2) | [GitHub](https://github.com/writeas/go-writeas) | Yes
-**Swift** | | [GitHub](https://github.com/writefreely/writefreely-swift) | Yes
+**Swift** | [GitHub Pages](https://writefreely.github.io/writefreely-swift/) | [GitHub](https://github.com/writefreely/writefreely-swift) | Yes
 **Java** | | [GitHub](https://github.com/writeas/java-writeas) | No
 
 These libraries were created by the community &mdash; [let us know](https://write.as/contact) if you create one, too!
