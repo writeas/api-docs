@@ -244,6 +244,8 @@ This creates a new post, associating it with a user account if authenticated. If
 * writeas7pm7rcdqg.onion/`{id}`
 * paste.as/`{id}` -- if `font` was _code_ or _mono_
 
+The created post will be published as a draft, since it will not be part of any blog/collection. To make the post public, move that draft to a blog/collection with the [Move a Post](#move-a-post-to-a-collection) endpoint.
+
 ### Authentication
 
 This can be done anonymously or while [authenticated](#authentication).
@@ -1105,6 +1107,8 @@ client.movePost(token: "00000000-0000-0000-0000-000000000000", postId: "rf3t35fk
 ```
 
 This adds a group of posts to a collection. This works for either posts that were created anonymously (i.e. don't belong to the user account) or posts already owned by the user account.
+
+If you are trying to publish a draft post to be public, use this endpoint to assign the draft post to a blog.
 
 ### Definition
 
