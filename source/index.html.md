@@ -24,7 +24,7 @@ code_clipboard: true
 
 Welcome to the [Write.as](https://write.as) API! Our API gives you full access to Write.as data and lets you build your own applications or utilities on top of it.
 
-Our API is accessible at **https://write.as/api/** (HTTPS _only_) and via our Tor hidden service at **writeas7pm7rcdqg.onion/api/**.
+Our API is accessible at **https://write.as/api/** (HTTPS _only_) and via our Tor onion service at **writeasw4b635r4o3vec6mu45s47ohfyro5vayzx2zjwod4pjswyovyd.onion/api/**.
 
 Backwards compatibility is important to us since we have a large set of [clients](https://write.as/apps) in the wild. As we add new features, we usually add endpoints and properties alongside existing ones, but don't remove or change finalized ones that are documented here. If a breaking API change is required in the future, we'll version new endpoints and update these docs.
 
@@ -241,7 +241,7 @@ client.createPost(post: post) { result in
 This creates a new post, associating it with a user account if authenticated. If the request is successful, the post will be available all of these locations:
 
 * write.as/`{id}`
-* writeas7pm7rcdqg.onion/`{id}`
+* writeasw4b635r4o3vec6mu45s47ohfyro5vayzx2zjwod4pjswyovyd.onion/`{id}`
 * paste.as/`{id}` -- if `font` was _code_ or _mono_
 
 ### Authentication
